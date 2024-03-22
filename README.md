@@ -67,7 +67,3 @@ accessibility?
 > ```
 > git push origin "<BRANCH_NAME>"
 > ```
-> Now shift to main branch
-> ```
-> git checkout main
-> ```
