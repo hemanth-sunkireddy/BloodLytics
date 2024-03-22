@@ -44,4 +44,26 @@ accessibility?
      python3 -m http.server
   ```
 
-4. Open index.html file 
+4. Open index.html file
+
+### Contribution
+> Clone the repository or Fork the repository.
+> cd into repository folder
+> Create new branch
+> ```
+> git checkout -b "<Branch_name>"
+> ```
+> Start modifying the code
+> Add and commit the changes by following the commands
+> ```
+> git add .
+> git commit -m "<Message>"
+> ```
+> rebase the main by
+> ```
+> git rebase main
+> ```
+> Finally push the changes.
+> ```
+> git push origin "<BRANCH_NAME>"
+> ```
