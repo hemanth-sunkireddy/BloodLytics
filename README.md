@@ -39,12 +39,12 @@ accessibility?
 ### How to Run 
 1. Clone the repository or Download the zip file.
 2. cd into the repository
-3. open terminal and run
+3. open terminal and run 
 ```
      python3 -m http.server
   ```
 
-4. Open index.html file
+4. Or else Open index.html file on Browser
 
 ### Contribution
 > Clone the repository or Fork the repository.
