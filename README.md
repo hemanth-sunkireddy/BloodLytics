@@ -1,4 +1,4 @@
-# Data Visualisation Project 
+# Data Visualisation Course Project 
 
 ## BloodLytics: Visualising Blood Donation Statistics
 
@@ -6,7 +6,6 @@ This project revolves around a detailed analysis of blood donation statistics, i
 donor demographics, donation frequency, and regional supply-demand
 imbalances. Sourcing relevant datasets from reputable health organizations and
 blood banks forms the basis for uncovering barriers to blood donation participation.
-## BloodLytics: Visualising Blood =================================================
 
 ### Users of the Project
 
