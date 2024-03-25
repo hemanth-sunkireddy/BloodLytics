@@ -1,0 +1,24 @@
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 200px;					
+    height: 140px;					
+    padding: 10px;				
+    font: 12px sans-serif;		
+    background: lightblue;	
+    border: 1px solid black;			
+    pointer-events: none;			
+}
+
+.bar-donations {
+  fill: steelblue;
+}
+
+.bar-requirements {
+  fill: red;
+}
+
+.bar:hover {
+  fill: #FFD700;
+}

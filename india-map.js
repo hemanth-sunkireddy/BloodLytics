@@ -1,46 +1,9 @@
-<html>
-<header>
-<title>Blood Donations vs Requirements</title>
-</header>
-<head>
-<meta charset="utf-8">
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<style>
 
-div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 200px;					
-    height: 140px;					
-    padding: 10px;				
-    font: 12px sans-serif;		
-    background: lightblue;	
-    border: 1px solid black;			
-    pointer-events: none;			
-}
-
-.bar-donations {
-  fill: steelblue;
-}
-
-.bar-requirements {
-  fill: red;
-}
-
-.bar:hover {
-  fill: #FFD700;
-}
-</style>
-</head>
-<body>
-  <div id = "postContents"; style="text-align:center;"> 
-  
-  <script>
     let margin = {top: 10, right: 20, bottom: 10, left: 450};
     let width = 1200 - margin.left - margin.right;
     let height = 700 - margin.top - margin.bottom;
     
-    let svg = d3.select("body").append("svg")
+    let svg = d3.select("#postContents").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -67,7 +30,6 @@ div.tooltip {
       projection.fitHeight(height-100,geoJsonData);
       let pathGenerator = d3.geoPath().projection(projection);
       
-      <!-- Append map of India -->
       let india = svg.append('g');     
       india.selectAll('path')
         .data(geoJsonData.features)
@@ -144,8 +106,3 @@ div.tooltip {
         });
               
     })
-  </script>
-  
-  </div>
-</body>
-</html>

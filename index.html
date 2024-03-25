@@ -16,18 +16,11 @@
     <link rel="stylesheet" href="assets/css/tiny-slider.css" />
     <link rel="stylesheet" href="assets/css/glightbox.min.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="india-map.css">
 
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
-
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
@@ -38,6 +31,7 @@
         </div>
     </div>
     <!-- /End Preloader -->
+
 
     <!-- Start Header Area -->
     <header class="header navbar-area">
@@ -86,6 +80,7 @@
         </div> <!-- container -->
     </header>
     <!-- End Header Area -->
+
 
     <!-- Start Hero Area -->
     <section class="hero-area">
@@ -233,23 +228,11 @@
                 <div class="col-lg-12 col-md-12 col-12 wow fadeInUp" data-wow-delay=".4s">
                     <!-- Start Single Service -->
                     <div class="single-service one row align-items-center">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div>
-                                    <img src="assets/images/india_map.png" width="20%">
-                                </div>
-                                <h3>Geographical Blood Requirements</h3>
-                                <p>Find the areas where blood requirements are more?</p>
-                            </div>
-                            <div class="col-lg-6 col-md-4 col-12">
-                                <div class="button">
-                                    <img src="assets/images/brand.png" alt="Logo" style="width: 120%; height: 120%;">
-                                    <p>Graph Here</p>
-                                </div>
-                            </div>
+
+                        <h3>Geographical Blood Requirements</h3>
+                        <p>Find the areas where blood requirements are more?</p>
+                        <div id="postContents" ; style="text-align:center;">
                         </div>
-
-
                     </div>
                     <!-- End Single Service -->
 
@@ -326,16 +309,16 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer newsletter">
-                                <div class="row">   
+                                <div class="row">
                                     <a href="https://github.com/hemanth-sunkireddy/BloodLytics">
-                                  <img src="assets/images/github.png" width="10%">
-                                  </a>
-                                  <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
-                                    <img src="assets/images/youtube.png" width="10%">
+                                        <img src="assets/images/github.png" width="10%">
+                                    </a>
+                                    <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
+                                        <img src="assets/images/youtube.png" width="10%">
                                     </a>
                                     <a href="https://hemanth-sunkireddy.github.io/BloodLytics/">
                                         <img src="assets/images/brand.png" width="13%" class="m-lg-0">
-                                        </a>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -361,47 +344,9 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/count-up.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        //========= testimonial 
-        tns({
-            container: '.testimonial-slider',
-            items: 3,
-            slideBy: 'page',
-            autoplay: false,
-            mouseDrag: true,
-            gutter: 0,
-            nav: true,
-            controls: false,
-            controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                540: {
-                    items: 1,
-                },
-                768: {
-                    items: 1,
-                },
-                992: {
-                    items: 1,
-                },
-                1170: {
-                    items: 2,
-                }
-            }
-        });
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="india-map.js"></script>
 
-        //====== counter up 
-        var cu = new counterUp({
-            start: 0,
-            duration: 2000,
-            intvalues: true,
-            interval: 100,
-            append: " ",
-        });
-        cu.start();
-    </script>
 </body>
 
 </html>
