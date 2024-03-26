@@ -94,13 +94,15 @@ document.addEventListener('DOMContentLoaded', async function () {
                                 // console.log(individualCountryExportData);
                                 return "green";
                             }
-                            else if (result > 30) {
+                            else if (result > 40) {
                                 // console.log(individualCountryExportData);
                                 return "blue";
                             }
-                            else if (result > 5) {
+                            else if (result > 30) {
                                 return "#C2A5CF";
-
+                            }
+                            else if (result > 10) {
+                                return "pink";
                             }
                             else {
                                 return "red";
