@@ -25,41 +25,46 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Loading CSV File here.
     const data = await d3.csv("Data_Sets/country_wise_blood_distribution.csv");
-    console.log(data);
+    // console.log(data);
 
     function draw_colors_to_map(slider_value) {
         let world_map_or_horizontal_bar_graph = 1;
         if (slider_value == 2) {
             world_map_or_horizontal_bar_graph = 2;
         }
+        let temporary_check_int = 0; 
         console.log(world_map_or_horizontal_bar_graph)
         // Load the GeoJSON data
         d3.json("Maps_JSON/world-countries.json").then(function (world) {
             // Draw the countries
             const TotalCountries = world.features;
-            console.log(TotalCountries.length);
+            // console.log(TotalCountries.length);
+            
             let ExtractedData = [];
             for (let i = 0; i < data.length; i++) {
+
                 let individualCountryData = [];
+                let countryName = data[i].Country;
+                // console.log(countryName);
                 let population_of_country = data[i].Population;
-                console.log(population_of_country);
+                // console.log(population_of_country);
                 let positive_a = data[i].A_POSITIVE;
-                console.log(positive_a);
+                // console.log(positive_a);
                 let positive_b = data[i].B_POSITIVE;
-                console.log(positive_b);
+                // console.log(positive_b);
                 let positive_o = data[i].O_POSITIVE;
-                console.log(positive_o);
+                // console.log(positive_o);
                 let positive_ab = data[i].AB_POSITIVE;
-                console.log(positive_ab);
+                // console.log(positive_ab);
                 let negative_a = data[i].A_NEGATIVE;
-                console.log(negative_a);
+                // console.log(negative_a);
                 let negative_b = data[i].B_NEGATIVE;
-                console.log(negative_b);
+                // console.log(negative_b);
                 let negative_o = data[i].O_NEGATIVE;
-                console.log(negative_o);
+                // console.log(negative_o);
                 let negative_ab = data[i].AB_NEGATIVE;
-                console.log(negative_ab);
-                individualCountryData.push(positive_o, positive_a, positive_b, positive_ab, negative_o, negative_a, negative_b, negative_ab)
+                // console.log(negative_ab);
+                individualCountryData.push(countryName, positive_o, positive_a, positive_b, positive_ab, negative_o, negative_a, negative_b, negative_ab)
                 ExtractedData.push(individualCountryData);
             }
             // console.log(ExtractedData)
@@ -72,45 +77,38 @@ document.addEventListener('DOMContentLoaded', async function () {
                 .attr("d", path)
                 .attr("fill", function (d) {
                     // console.log(d.id);
-
+                    let small_temporary_check = 0;
                     for (let j = 0; j < ExtractedData.length; j++) {
-                        console.log(ExtractedData.length);
+                        // console.log(ExtractedData.length);
+                        // console.log(ExtractedData);
+                        // console.log(ExtractedData[j][0]);
+                        // console.log(d.properties.name);
                         if (ExtractedData[j][0] == d.properties.name) {
-                            // console.log(j);
-                            // console.log(ExtractedData[j][0]);
-                            var individualCountryExportData = ExtractedData[j][world_map_or_horizontal_bar_graph];
-                            if (individualCountryExportData > 100) {
-                                // console.log(individualCountryExportData)
-                                return "#ACD39E";
-                            }
-                            else if (individualCountryExportData > 25) {
+                            temporary_check_int = temporary_check_int  + 1; 
+                            
+                            var individualCountryExportData = ExtractedData[j][1];
+                            result = individualCountryExportData.replace('%', '');
+                            console.log(result);
+
+                            if (result > 50) {
                                 // console.log(individualCountryExportData);
-                                return "#D9F0D3";
+                                return "green";
                             }
-                            else if (individualCountryExportData > 10) {
+                            else if (result > 30) {
                                 // console.log(individualCountryExportData);
-                                return "#F7F7F7";
+                                return "blue";
                             }
-                            else if (individualCountryExportData > 5) {
+                            else if (result > 5) {
                                 return "#C2A5CF";
 
                             }
-                            else if (individualCountryExportData > 1) {
-                                return "#762A83";
-                            }
-                            else if (individualCountryExportData > 0) {
-                                return "#FEE391";
-                            }
-                            else if (individualCountryExportData == 0) {
-                                console.log("found")
-                                return "red";
-                            }
                             else {
-                                return "#1B7837";
+                                return "red";
 
                             }
 
                         }
+                        
                     }
 
                 })
@@ -124,8 +122,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                     d3.select(this)
                         .attr("stroke-width", 0.5)
                 })
+                // console.log(temporary_check_int);
         });
-
+       
     }
 
 
