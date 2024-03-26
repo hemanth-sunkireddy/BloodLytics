@@ -240,17 +240,10 @@
                         <div class="row align-items-center">
 
                             <div class="col-lg-6 col-md-4 col-12">
-                                <div class="button">
-                                    <img src="assets/images/brand.png" alt="Logo" style="width: 120%; height: 120%;">
-                                    <p>Graph Here</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div>
-                                    <img src="assets/images/india_map.png" width="20%">
-                                </div>
-                                <h3>Relationship between donor and recipients</h3>
-                                <p>Relations?</p>
+                                <p class="fw-bold">Choose Import or Export</p>
+                                <p>World Map &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Horizontal Bar Chart</p>
+                                <input type="range" min="1" max="2" value="1" class="slider" id="slider" />
+                                <div id="world-map"></div>
                             </div>
                         </div>
                     </div>
@@ -344,8 +337,15 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/count-up.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="india-map.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v7.js"></script> -->
+    <script src="scripts/india-map.js"></script>
+
+
+    <!-- Adding Graph Files -->
+    <script src="assets/js/d3-geo-projection.v2.min.js"></script>
+    <script src="assets/js/d3-scale-chromatic.v1.min.js"></script>
+    <script src="scripts/world-map.js"></script>
 
 </body>
 

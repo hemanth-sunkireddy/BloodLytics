@@ -21,8 +21,8 @@
       .style("opacity", 0);
     
     Promise.all([
-      d3.json("india-states.json"),
-      d3.csv("blood_data.csv")
+      d3.json("Maps_JSON/india-states.json"),
+      d3.csv("Data_Sets/blood_data.csv")
     ]).then(function(data){
       let geoJsonData = data[0];
       let bloodData = data[1];
