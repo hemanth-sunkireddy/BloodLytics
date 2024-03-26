@@ -119,13 +119,25 @@
                                     <div class="row align-items-center">
             
                                         <div class="col-lg-6 col-md-4 col-12">
-                                            <p class="fw-bold">Choose World Map or Horizontal Bar Chart</p>
-                                            <p>O+ &nbsp;&nbsp; &nbsp;&nbsp; A+ &nbsp;&nbsp; &nbsp;&nbsp; B+ &nbsp;&nbsp;  &nbsp;&nbsp; AB+ &nbsp;&nbsp;  &nbsp;&nbsp; O- &nbsp;&nbsp; &nbsp;&nbsp; A- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; B- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; AB-</p>
-                                            <!-- <input type="range" min="1" max="8" value="1" class="slider" id="slider"  style="width: 60%;"/>
-                                             <p class="fw-bold">Choose World Map or Horizontal Bar Chart</p>
-                                            <p>O+ &nbsp;&nbsp; &nbsp;&nbsp; A+ &nbsp;&nbsp; &nbsp;&nbsp; B+ &nbsp;&nbsp;  &nbsp;&nbsp; AB+ &nbsp;&nbsp;  &nbsp;&nbsp; O- &nbsp;&nbsp; &nbsp;&nbsp; A- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; B- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; AB-</p>
-                                            <input type="range" min="1" max="8" value="1" class="slider" id="slider"  style="width: 60%;"/> -->
-                                            
+                                            <div> 
+                                                <div class="row">
+                                                  <div class="col-lg-1">
+                                                    <p id="color1_text">>50%  <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span></p>
+                                                  </div>
+                                                  <div class="col-lg-1">
+                                                    <p id="color2_text">>40%<span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span></p>
+                                                  </div>
+                                                 
+                                                  <div class="col-lg-1">
+                                                    <p id="color3_text">>30% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span></p>
+                                                  </div>
+                                                  <div class="col-lg-1">
+                                                    <p id="color4_text">>20%<span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span></p>
+                                                  </div>
+                                                 
+                                                <p>Not Available  <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="black"></circle></svg></span></p>
+                                                </div>
+                                              </div>
                                             <div id="world-map"></div>
                                         </div>
                                         <div class="col-lg-6 col-md-4 col-12">
@@ -233,6 +245,58 @@
     <script src="assets/js/d3-geo-projection.v2.min.js"></script>
     <script src="assets/js/d3-scale-chromatic.v1.min.js"></script>
     <script src="scripts/world-map.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var slider = document.getElementById('bw_or_color');
+    slider.addEventListener('input', function() {
+        var givenValue = parseInt(this.value);
+
+        var firstColor = document.getElementById('color1_text');
+        var secondColor = document.getElementById('color2_text');
+        var thirdColor = document.getElementById('color3_text');
+        var fourthColor = document.getElementById('color4_text');
+
+        console.log(firstColor, secondColor, thirdColor, fourthColor);
+
+        // Select SVG elements by their IDs or classes
+        var svgElement1 = document.getElementById('color1_color');
+        var svgElement2 = document.getElementById('color2_color');
+        var svgElement3 = document.getElementById('color3_color');
+        var svgElement4 = document.getElementById('color4_color');
+
+        // Add similar variables for other elements
+
+        if (givenValue == 1) {
+            firstColor.innerText = '>50%';
+            secondColor.innerText = '>40%';
+            thirdColor.innerText = '>30%';
+            fourthColor.innerText = '>20%';
+
+            // color the svg elements
+
+            svgElement1.setAttribute('fill', '#FFFFFF');
+            svgElement2.setAttribute('fill', '#F0EFEF');
+            svgElement3.setAttribute('fill', '#D3D3D3');
+            svgElement4.setAttribute('fill', '#A9A9A9');
+
+        } else if (givenValue == 2) {
+            firstColor.innerText = '>30%';
+            secondColor.innerText = '>20%';
+            thirdColor.innerText = '>10%';
+            fourthColor.innerText = '>0%';
+
+            // Color the svg elements
+
+            svgElement1.setAttribute('fill', '#FF0000');
+            svgElement2.setAttribute('fill', '#00FF00');
+            svgElement3.setAttribute('fill', '#0000FF');
+            svgElement4.setAttribute('fill', '#FFA500');
+        }
+    });
+});
+
+    </script>
 
 </body>
 
