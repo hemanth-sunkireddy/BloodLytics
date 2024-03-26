@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             world_map_or_horizontal_bar_graph = 8;
         }
         let temporary_check_int = 0; 
-        console.log(world_map_or_horizontal_bar_graph)
+        // console.log(world_map_or_horizontal_bar_graph)
         // Load the GeoJSON data
         d3.json("Maps_JSON/world-countries.json").then(function (world) {
             // Draw the countries
@@ -106,28 +106,25 @@ document.addEventListener('DOMContentLoaded', async function () {
                             // console.log(ExtractedData);
                             var individualCountryExportData = ExtractedData[j][world_map_or_horizontal_bar_graph];
                             result = individualCountryExportData.replace('%', '');
-                            // console.log(result);
-                            console.log(slider_value)
-                            console.log(world_map_or_horizontal_bar_graph);
+                            console.log(result);
+                            // console.log(slider_value)
+                            // console.log(world_map_or_horizontal_bar_graph);
                             // console.log(d.properties.name);
 
                             if (result > 50) {
                                 // console.log(individualCountryExportData);
-                                return "green";
+                                return "#FFFFFF";
                             }
                             else if (result > 40) {
                                 // console.log(individualCountryExportData);
-                                return "blue";
+                                return "#D3D3D3";
                             }
                             else if (result > 30) {
-                                return "#C2A5CF";
+                                return "#A9A9A9";
                             }
-                            else if (result > 20) {
-                                return "pink";
-                            }
+                            
                             else {
-                                return "red";
-
+                                return "#000000";
                             }
 
                         }
@@ -139,13 +136,13 @@ document.addEventListener('DOMContentLoaded', async function () {
                 .attr("stroke-width", 0.5)
                 .on("mouseover", function (event, d, i) {
                     let point = this.getAttribute('class');
-                    console.log(point);
+                    // console.log(point);
     
-                    console.log(this);
+                    // console.log(this);
                     // d3.select(this).style("fill", "orange");
                     // Calculate the position of the tooltip relative to the SVG container
-                    const tooltipX = event.offsetX  + 100;
-                    const tooltipY = event.offsetY + 100;
+                    const tooltipX = event.offsetX  +500;
+                    const tooltipY = event.offsetY + 300;
     
                     tooltip.html(` ${d.properties.name}`)
                         .style("left", tooltipX + "px")
@@ -177,14 +174,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         // For example:
         return 50 + "px"; // Adjust multiplier as needed
     });
-
-
-
     // Function to update slider id
     async function updateSliderId() {
         slidervalue = importexportSlider.value;
         draw_colors_to_map(slidervalue);
-        console.log(slidervalue);
+        // console.log(slidervalue);
     }
 
     // Initial update
