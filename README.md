@@ -18,7 +18,7 @@ blood banks forms the basis for uncovering barriers to blood donation participat
 
 ### Questions get answered
 
-a) Find the areas where blood requirements are more?
+(a) Find the areas where blood requirements are more?
 (b) What is the distribution of blood groups, gender, age groups, and
 relations among donors and recipients?
 (c) How does demographic information such as age, gender, and location
