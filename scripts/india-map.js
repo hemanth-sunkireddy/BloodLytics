@@ -49,6 +49,69 @@ Promise.all([
   // Append a group for India map
   let india = map.append('g');
 
+  // Append a group for the legend
+  let legend = svg.append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate(" + (width - 150) + "," + (height - 200) + ")");
+
+  // Function to update legend based on selected data
+  function updateLegend(value) {
+    legend.selectAll("*").remove(); // Clear existing legend
+
+    let legendData = [];
+
+    if (value === "Total") {
+      // Define color scale based on total donors
+      let colorScale = d3.scaleLinear()
+        .domain([0, d3.max(data, d => parseInt(d.TotalDonors))])
+        .range(['lightyellow', 'red']);
+
+      // Generate data for legend
+      for (let i = 0; i <= 5; i++) {
+        legendData.push({
+          color: colorScale((i / 5) * d3.max(bloodData["Total"], d => parseInt(d.TotalDonors))),
+          label: Math.round((i / 5) * d3.max(bloodData["Total"], d => parseInt(d.TotalDonors)))
+        });
+      }
+    } else {
+      // Define color scale based on fraction of male and female donors
+      let colorScale = d3.scaleLinear()
+        .domain([0, 1])
+        .range(['lightyellow', 'red']);
+
+      // Generate data for legend
+      for (let i = 0; i <= 5; i++) {
+        legendData.push({
+          color: colorScale(i / 5),
+          label: (i / 5).toFixed(2)
+        });
+      }
+    }
+
+    // Append rectangles and labels for legend
+    legend.selectAll(".legend-color")
+      .data(legendData)
+      .enter().append("rect")
+      .attr("class", "legend-color")
+      .attr("x", 0)
+      .attr("y", (d, i) => i * 20)
+      .attr("width", 20)
+      .attr("height", 20)
+      .style("fill", d => d.color);
+
+    legend.selectAll(".legend-label")
+      .data(legendData)
+      .enter().append("text")
+      .attr("class", "legend-label")
+      .attr("x", 30)
+      .attr("y", (d, i) => i * 20 + 14)
+      .text(d => d.label);
+  }
+
+  // Call updateLegend initially
+  updateLegend('Family');
+
+
   // Function to update choropleth based on selected data
   function updateChoropleth(value) {
     let data = bloodData[value]
@@ -73,12 +136,14 @@ Promise.all([
           }
           else {
             let stateTotal = bloodData["Total"].find(entry => entry.state === d.id);
-            console.log("TOTAL: ",stateTotal);
+            console.log("TOTAL: ", stateTotal);
             // Define color scale based on total donors
             let colorScale = d3.scaleLinear()
               .domain([0, 1])
               .range(['lightyellow', 'red']);
-            return colorScale(parseInt((stateData.MaleDonors + stateData.FemaleDonors)/stateTotal.TotalDonors));
+
+            console.log("frac:", (parseInt(stateData.MaleDonors) + parseInt(stateData.FemaleDonors)) / parseInt(stateTotal.TotalDonors));
+            return colorScale((parseInt(stateData.MaleDonors) + parseInt(stateData.FemaleDonors)) / parseInt(stateTotal.TotalDonors));
           }
         }
         else {
@@ -100,6 +165,9 @@ Promise.all([
         // Mouseout event handler for hiding tooltip
         div.style("opacity", 0);
       });
+
+    // Call updateLegend with the selected value
+    updateLegend(value);
   }
 
   // Dropdown menu for selecting data type
