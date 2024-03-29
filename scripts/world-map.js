@@ -33,20 +33,31 @@ document.addEventListener('DOMContentLoaded', async function () {
     let color_to_draw4 ;
     let color_to_draw5 ;
 
+    let percentage1; 
+    let percentage2; 
+    let percentage3; 
+    let percentage4; 
+    let percentage5; 
+
     function draw_colors_to_map(slider_value, black_or_color) {
-        console.log(black_or_color);
+        percentage1 = 50
+        percentage2 = 40
+        percentage3 = 30
+        percentage4 = 20 
+
+        // console.log(black_or_color);
         if ( black_or_color ==  1){
             color_to_draw1 = "FFFFFF";
-            color_to_draw2 = "F0EFEF";
-            color_to_draw3 = "D3D3D3";
-            color_to_draw4 = "A9A9A9";
+            color_to_draw2 = "CCCCCC";
+            color_to_draw3 = "999999";
+            color_to_draw4 = "666666";
             color_to_draw5 = "000000";
         }
         else if ( black_or_color == 2){
-            color_to_draw1 = "FF0000";
-            color_to_draw2 = "00FF00";
-            color_to_draw3 = "0000FF";
-            color_to_draw4 = "FFA500";
+            color_to_draw1 = "7FFF00";
+            color_to_draw2 = "FFA500";
+            color_to_draw3 = "9370DB";
+            color_to_draw4 = "FF6347";
             color_to_draw5 = "000000";
         }
        
@@ -54,23 +65,51 @@ document.addEventListener('DOMContentLoaded', async function () {
         let world_map_or_horizontal_bar_graph = 1;
         if (slider_value == 2) {
             world_map_or_horizontal_bar_graph = 2;
+            percentage1 = 35;
+            percentage2 = 27; 
+            percentage3 = 20; 
+            percentage4 = 10; 
         }
         else if (slider_value == 3) {
+            percentage1 = 16.5; 
+            percentage2 = 10; 
+            percentage3 = 5; 
+            percentage4 = 1; 
             world_map_or_horizontal_bar_graph = 3;
         }
         else if (slider_value == 4) {
+            percentage1 = 6.9;
+            percentage2 = 5.5; 
+            percentage3 = 3.9; 
+            percentage4 = 0.4; 
             world_map_or_horizontal_bar_graph = 4;
         }
         else if (slider_value == 5) {
+            percentage1 = 6.5; 
+            percentage2 = 4.5; 
+            percentage3 = 1; 
+            percentage4 = 0.01; 
             world_map_or_horizontal_bar_graph = 5;
         }
         else if (slider_value == 6) {
+            percentage1 = 5.9; 
+            percentage2 = 2.5;
+            percentage3 = 0.9;
+            percentage4 = 0.01; 
             world_map_or_horizontal_bar_graph = 6;
         }
         else if (slider_value == 7) {
+            percentage1 = 1.5; 
+            percentage2 = 1;
+            percentage3 = 0.5;
+            percentage4 = 0.01; 
             world_map_or_horizontal_bar_graph = 7;
         }
         else if (slider_value == 8) {
+            percentage1 = 0.8; 
+            percentage2 = 0.3;
+            percentage3 = 0.1;
+            percentage4 = 0; 
             world_map_or_horizontal_bar_graph = 8;
         }
         let temporary_check_int = 0;
@@ -108,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 individualCountryData.push(countryName, positive_o, positive_a, positive_b, positive_ab, negative_o, negative_a, negative_b, negative_ab)
                 ExtractedData.push(individualCountryData);
             }
-            // console.log(ExtractedData)
+            // console.log(ExtractedData);
 
             svg.selectAll("path").remove();
 
@@ -124,9 +163,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                         // console.log(ExtractedData);
                         // console.log(ExtractedData[j][0]);
                         // console.log(d.properties.name);
+                        // console.log(world_map_or_horizontal_bar_graph);
                         if (ExtractedData[j][0] == d.properties.name) {
                             temporary_check_int = temporary_check_int + 1;
-                            // console.log(ExtractedData);
                             var individualCountryExportData = ExtractedData[j][world_map_or_horizontal_bar_graph];
                             result = individualCountryExportData.replace('%', '');
                             // console.log(result);
@@ -134,19 +173,27 @@ document.addEventListener('DOMContentLoaded', async function () {
                             // console.log(world_map_or_horizontal_bar_graph);
                             // console.log(d.properties.name);
 
-                            if (result > 50) {
+                            if (result > percentage1) {
+                                console.log("TEST AGAIN");
                                 // console.log(individualCountryExportData);
                                 return "#" + color_to_draw1;
                             }
-                            else if (result > 40) {
+                            else if (result > percentage2) {
+                                
+                                // console.log("HELLO");
                                 return "#" + color_to_draw2;
                             }
-                            else if (result > 30) {
+                            else if (result > percentage3) {
+                                
                                 // console.log(individualCountryExportData);
+                                // console.log("HELLO");
                                 return "#" + color_to_draw3;
                             }
-                            else if (result > 20) {
+                            else if (result > percentage4) {
+                                // console.log("EHE");
+                                // console.log("HELLO");
                                 return "#" + color_to_draw4;
+                                
                             }
 
                             else {
@@ -159,7 +206,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 })
                 .attr("stroke", "white")
-                .attr("stroke-width", 0.5)
+                .attr("stroke-width", 2)
                 .on("mouseover", function (event, d, i) {
                     let point = this.getAttribute('class');
                     // console.log(point);
@@ -167,10 +214,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // console.log(this);
                     // d3.select(this).style("fill", "orange");
                     // Calculate the position of the tooltip relative to the SVG container
-                    const tooltipX = event.offsetX + 500;
-                    const tooltipY = event.offsetY + 300;
+                    const tooltipX = event.offsetX + 300;
+                    const tooltipY = event.offsetY + 400;
 
-                    tooltip.html(` ${d.properties.name}`)
+                    tooltip.html(` ${d.properties.name}, ${result}%`)
                         .style("left", tooltipX + "px")
                         .style("top", tooltipY + "px")
                         .style("opacity", 1)
@@ -190,21 +237,23 @@ document.addEventListener('DOMContentLoaded', async function () {
         .attr("class", "tooltip")
         .style("opacity", 1)
         .style("position", "absolute")
-        .style("width", function (d) {
-            // Adjust width dynamically based on content
-            // For example:
-            return 100 + "px"; // Adjust multiplier as needed
-        })
-        .style("height", function (d) {
-            // Adjust width dynamically based on content
-            // For example:
-            return 50 + "px"; // Adjust multiplier as needed
-        });
+        .style("width", "150px") // Adjust width as needed
+        .style("height", "auto") // Adjust height as needed
+        .style("background-color", "#ffb6c1") // Change background color
+        .style("border", "1px solid #000000") // Add border
+        .style("padding", "10px") // Add padding for better appearance
+        .style("border-radius", "5px") // Add border radius for rounded corners
+        .style("color", "#000000") // Change text color
+        .style("font-weight", "bold") // Make text bold
+        .style("font-size", "12px") // Change font size
+        .style("pointer-events", "none") // Avoid tooltip blocking mouse events
+        .style("visibility", "hidden");
+        
     // Function to update slider id
     async function updateSliderId() {
         slidervalue = importexportSlider.value;
         black_or_color = black_white_or_color.value;
-        console.log(black_or_color);
+        // console.log(black_or_color);
         draw_colors_to_map(slidervalue, black_or_color);
         // console.log(slidervalue);
     }
