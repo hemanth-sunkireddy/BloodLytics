@@ -1,5 +1,10 @@
 # Data Visualisation Course Project 
 
+# Link to the website: 
+```
+https://hemanth-sunkireddy.github.io/BloodLytics
+```
+
 ## BloodLytics: Visualising Blood Donation Statistics
 
 This project revolves around a detailed analysis of blood donation statistics, including 
