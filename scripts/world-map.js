@@ -1,3 +1,4 @@
+let result;
 
 document.addEventListener('DOMContentLoaded', async function () {
     const importexportSlider = document.getElementById('slider');
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Set up the SVG dimensions
     const width = 1296;
     const height = 724;
+
 
     // Create SVG element
     const svg = d3.select("#world-map")
@@ -27,89 +29,89 @@ document.addEventListener('DOMContentLoaded', async function () {
     const data = await d3.csv("Data_Sets/country_wise_blood_distribution.csv");
     // console.log(data);
 
-    let color_to_draw1 ;
-    let color_to_draw2 ;
-    let color_to_draw3 ;
-    let color_to_draw4 ;
-    let color_to_draw5 ;
+    let color_to_draw1;
+    let color_to_draw2;
+    let color_to_draw3;
+    let color_to_draw4;
+    let color_to_draw5;
 
-    let percentage1; 
-    let percentage2; 
-    let percentage3; 
-    let percentage4; 
-    let percentage5; 
+    let percentage1;
+    let percentage2;
+    let percentage3;
+    let percentage4;
+    let percentage5;
 
     function draw_colors_to_map(slider_value, black_or_color) {
         percentage1 = 50
         percentage2 = 40
         percentage3 = 30
-        percentage4 = 20 
+        percentage4 = 20
 
         // console.log(black_or_color);
-        if ( black_or_color ==  1){
+        if (black_or_color == 1) {
             color_to_draw1 = "FFFFFF";
             color_to_draw2 = "CCCCCC";
             color_to_draw3 = "999999";
             color_to_draw4 = "666666";
             color_to_draw5 = "000000";
         }
-        else if ( black_or_color == 2){
+        else if (black_or_color == 2) {
             color_to_draw1 = "7FFF00";
             color_to_draw2 = "FFA500";
             color_to_draw3 = "9370DB";
             color_to_draw4 = "FF6347";
             color_to_draw5 = "000000";
         }
-       
+
 
         let world_map_or_horizontal_bar_graph = 1;
         if (slider_value == 2) {
             world_map_or_horizontal_bar_graph = 2;
             percentage1 = 35;
-            percentage2 = 27; 
-            percentage3 = 20; 
-            percentage4 = 10; 
+            percentage2 = 27;
+            percentage3 = 20;
+            percentage4 = 10;
         }
         else if (slider_value == 3) {
-            percentage1 = 16.5; 
-            percentage2 = 10; 
-            percentage3 = 5; 
-            percentage4 = 1; 
+            percentage1 = 16.5;
+            percentage2 = 10;
+            percentage3 = 5;
+            percentage4 = 1;
             world_map_or_horizontal_bar_graph = 3;
         }
         else if (slider_value == 4) {
             percentage1 = 6.9;
-            percentage2 = 5.5; 
-            percentage3 = 3.9; 
-            percentage4 = 0.4; 
+            percentage2 = 5.5;
+            percentage3 = 3.9;
+            percentage4 = 0.4;
             world_map_or_horizontal_bar_graph = 4;
         }
         else if (slider_value == 5) {
-            percentage1 = 6.5; 
-            percentage2 = 4.5; 
-            percentage3 = 1; 
-            percentage4 = 0.01; 
+            percentage1 = 6.5;
+            percentage2 = 4.5;
+            percentage3 = 1;
+            percentage4 = 0.01;
             world_map_or_horizontal_bar_graph = 5;
         }
         else if (slider_value == 6) {
-            percentage1 = 5.9; 
+            percentage1 = 5.9;
             percentage2 = 2.5;
             percentage3 = 0.9;
-            percentage4 = 0.01; 
+            percentage4 = 0.01;
             world_map_or_horizontal_bar_graph = 6;
         }
         else if (slider_value == 7) {
-            percentage1 = 1.5; 
+            percentage1 = 1.5;
             percentage2 = 1;
             percentage3 = 0.5;
-            percentage4 = 0.01; 
+            percentage4 = 0.01;
             world_map_or_horizontal_bar_graph = 7;
         }
         else if (slider_value == 8) {
-            percentage1 = 0.8; 
+            percentage1 = 0.8;
             percentage2 = 0.3;
             percentage3 = 0.1;
-            percentage4 = 0; 
+            percentage4 = 0;
             world_map_or_horizontal_bar_graph = 8;
         }
         let temporary_check_int = 0;
@@ -149,6 +151,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
             // console.log(ExtractedData);
 
+
+
             svg.selectAll("path").remove();
 
             svg.selectAll("path")
@@ -179,12 +183,12 @@ document.addEventListener('DOMContentLoaded', async function () {
                                 return "#" + color_to_draw1;
                             }
                             else if (result > percentage2) {
-                                
+
                                 // console.log("HELLO");
                                 return "#" + color_to_draw2;
                             }
                             else if (result > percentage3) {
-                                
+
                                 // console.log(individualCountryExportData);
                                 // console.log("HELLO");
                                 return "#" + color_to_draw3;
@@ -193,9 +197,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                                 // console.log("EHE");
                                 // console.log("HELLO");
                                 return "#" + color_to_draw4;
-                                
-                            }
 
+                            }
                             else {
                                 return "#" + color_to_draw5;
                             }
@@ -214,6 +217,14 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // console.log(this);
                     // d3.select(this).style("fill", "orange");
                     // Calculate the position of the tooltip relative to the SVG container
+                    let result;
+                    for (let j = 0; j < ExtractedData.length; j++) {
+                        if (ExtractedData[j][0] === d.properties.name) {
+                            var individualCountryExportData = ExtractedData[j][world_map_or_horizontal_bar_graph];
+                            result = individualCountryExportData.replace('%', '');
+                            break;
+                        }
+                    }
                     const tooltipX = event.offsetX + 300;
                     const tooltipY = event.offsetY + 400;
 
@@ -248,7 +259,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         .style("font-size", "12px") // Change font size
         .style("pointer-events", "none") // Avoid tooltip blocking mouse events
         .style("visibility", "hidden");
-        
+
     // Function to update slider id
     async function updateSliderId() {
         slidervalue = importexportSlider.value;
