@@ -108,7 +108,7 @@ Promise.all([
       legend.append("text")
         .attr("x", -100)
         .attr("y", -10)
-        .text("Relative fraction of selected type vs Total")
+        .text("Relative fraction of selected type")
         .style("font-weight", "bold");
     }
 
@@ -198,6 +198,39 @@ Promise.all([
     updateLegend(value);
   }
 
+// Append text element for displaying additional information
+let infoText = svg.append("text")
+  .attr("class", "info-text")
+  .attr("x", 1200)
+  .attr("y", 500)
+  .attr("text-anchor", "end")
+  .style("font-size", "16px")
+  .style("font-weight", "bold")
+  .style("fill", "#333");
+
+// Function to update additional information text based on selected data
+function updateInfoText(value) {
+  if (value === "Total")
+  {
+    infoText.text("");
+  }
+  else if(value === "Family")
+  {
+    infoText.text("Family blood donations may be higher in states like Uttarpradesh due to strong familial bonds and cultural values.");
+  }
+  else if(value === "Replacement")
+  {
+    infoText.text("Replacement blood donations vary due to cultural norms, awareness, and healthcare infrastructure in different states.");
+  }
+  else if(value === "Voluntary")
+  {
+    infoText.text("Economic constraints, corruption distrust, lack of awareness contribute to low voluntary donations, in states like Bihar.");
+  }
+}
+
+// Call updateInfoText initially
+updateInfoText('Family');
+
   // Dropdown menu for selecting data type
   let dropdown = d3.select("#postContents")
     .append("select")
@@ -226,6 +259,7 @@ Promise.all([
   dropdown.on("change", function () {
     updateChoropleth(this.value);
     updateBarGraph(this.value);
+    updateInfoText(this.value);
   });
 
   // Initial update of choropleth
