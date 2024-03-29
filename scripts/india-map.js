@@ -108,7 +108,7 @@ Promise.all([
       legend.append("text")
         .attr("x", -100)
         .attr("y", -10)
-        .text("Fraction of Dontations in this mode")
+        .text("Relative fraction of selected type vs Total")
         .style("font-weight", "bold");
     }
 
