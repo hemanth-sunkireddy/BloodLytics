@@ -203,8 +203,17 @@ Promise.all([
     .append("select")
     .attr("id", "dropdown")
     .style("position", "absolute")
-    .style("top", "20px")
-    .style("left", "20px");
+    .style("top", "425px")
+    .style("left", "950px");
+
+  // Add styling to the dropdown
+  dropdown.style("background-color", "white")
+    .style("border", "1px solid #ccc")
+    .style("border-radius", "4px")
+    .style("padding", "5px")
+    .style("font-size", "14px")
+    .style("color", "#333")
+    .style("cursor", "pointer");
 
   // Populate options in the dropdown
   dropdown.selectAll("option")
