@@ -1,5 +1,5 @@
 // Define margins and dimensions for the visualization
-let margin = { top: 20, right: 50, bottom: 50, left: 100 };
+let margin = { top: 25, right: 50, bottom: 50, left: 100 };
 let svgWidth = 1200;
 let svgHeight = 1100;
 let mapHeight = 600;
@@ -37,7 +37,6 @@ Promise.all([
   d3.csv("Data_Sets/TotalBloodDonor.csv")
 ]).then(function (data) {
   // Data loading successful
-  console.log("Data loaded successfully:", data);
 
   // Extract required data
   let geoJsonData = data[0];
@@ -68,19 +67,31 @@ Promise.all([
     let legendData = [];
 
     if (value === "Total") {
+      // Extract maximum and minimum values of TotalDonors
+      let maxTotalDonors = d3.max(bloodData["Total"], d => parseInt(d.TotalDonors));
+      let minTotalDonors = d3.min(bloodData["Total"], d => parseInt(d.TotalDonors));
+
       // Define color scale based on total donors
       let colorScale = d3.scaleLinear()
-        .domain([0, d3.max(data, d => parseInt(d.TotalDonors))])
+        .domain([minTotalDonors, maxTotalDonors])
         .range(['lightyellow', 'red']);
 
       // Generate data for legend
       for (let i = 0; i <= 5; i++) {
+        let value = minTotalDonors + (i / 5) * (maxTotalDonors - minTotalDonors);
         legendData.push({
-          color: colorScale((i / 5) * d3.max(bloodData["Total"], d => parseInt(d.TotalDonors))),
-          label: Math.round((i / 5) * d3.max(bloodData["Total"], d => parseInt(d.TotalDonors)))
+          color: colorScale(value),
+          label: Math.round(value)
         });
       }
-    } else {
+
+      legend.append("text")
+        .attr("x", -10)
+        .attr("y", -10)
+        .text("Total Dontations")
+        .style("font-weight", "bold");
+    }
+    else {
       // Define color scale based on fraction of male and female donors
       let colorScale = d3.scaleLinear()
         .domain([0, 1])
@@ -93,6 +104,12 @@ Promise.all([
           label: (i / 5).toFixed(2)
         });
       }
+
+      legend.append("text")
+        .attr("x", -100)
+        .attr("y", -10)
+        .text("Fraction of Dontations in this mode")
+        .style("font-weight", "bold");
     }
 
     // Append rectangles and labels for legend
@@ -113,6 +130,8 @@ Promise.all([
       .attr("x", 30)
       .attr("y", (d, i) => i * 20 + 14)
       .text(d => d.label);
+
+
   }
 
   // Call updateLegend initially
@@ -120,8 +139,7 @@ Promise.all([
 
   // Function to update choropleth based on selected data
   function updateChoropleth(value) {
-    let data = bloodData[value]
-    console.log("Updating choropleth with data:", data);
+    let data = bloodData[value];
 
     // Update map colors based on data
     india.selectAll('path')
@@ -130,10 +148,8 @@ Promise.all([
       .attr('d', pathGenerator)
       .style("fill", d => {
         let stateData = data.find(entry => entry.state === d.id);
-        console.log("state:", stateData);
         if (stateData) {
           if (value === "Total") {
-            // Define color scale based on total donors
             let colorScale = d3.scaleLinear()
               .domain([0, d3.max(data, d => parseInt(d.TotalDonors))])
               .range(['lightyellow', 'red']);
@@ -141,13 +157,9 @@ Promise.all([
           }
           else {
             let stateTotal = bloodData["Total"].find(entry => entry.state === d.id);
-            console.log("TOTAL: ", stateTotal);
-            // Define color scale based on total donors
             let colorScale = d3.scaleLinear()
               .domain([0, 1])
               .range(['lightyellow', 'red']);
-
-            console.log("frac:", (parseInt(stateData.MaleDonors) + parseInt(stateData.FemaleDonors)) / parseInt(stateTotal.TotalDonors));
             return colorScale((parseInt(stateData.MaleDonors) + parseInt(stateData.FemaleDonors)) / parseInt(stateTotal.TotalDonors));
           }
         }
@@ -160,25 +172,24 @@ Promise.all([
         // Mouseover event handler for tooltip
         div.style("opacity", .9);
         let stateData = data.find(entry => entry.state === d.id);
-        if (value === "Total")
-        {
-        div.html(stateData.state + "</br>"
-          + "TotalDonors: " + stateData.TotalDonors)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-        }
-        else
-        {
+        if (value === "Total") {
           div.html(stateData.state + "</br>"
-          + "MaleDonors: " + stateData.MaleDonors + "</br>"
-          + "FemaleDonors: " + stateData.FemaleDonors + "</br>")
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
+            + "TotalDonors: " + stateData.TotalDonors)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        }
+        else {
+          div.html(stateData.state + "</br>"
+            + "MaleDonors: " + stateData.MaleDonors + "</br>"
+            + "FemaleDonors: " + stateData.FemaleDonors + "</br>")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
         }
         // Highlight corresponding bar in the bar chart
+        highlightBarInChoropleth(stateData.state);
         highlightStateInBarChart(stateData.state);
       })
-      .on("mouseout", function (d) {
+      .on("mouseout", function () {
         // Mouseout event handler for hiding tooltip
         div.style("opacity", 0);
       });
@@ -204,8 +215,6 @@ Promise.all([
 
   // Dropdown change event handler
   dropdown.on("change", function () {
-    // let selectedData = bloodData[this.value];
-    console.log("type: ", this.value);
     updateChoropleth(this.value);
     updateBarGraph(this.value);
   });
@@ -213,24 +222,24 @@ Promise.all([
   // Initial update of choropleth
   updateChoropleth('Family');
 
+  // Initial display of bar graph for 'Family'
+  updateBarGraph('Family');
+
   // Function to update horizontal bar graph
   function updateBarGraph(value) {
     // Remove existing bar graph
     barGraph.selectAll("*").remove();
     let data = bloodData[value];
     // Create data for the horizontal bar chart
-    console.log("bar:", data);
     let barData = data.map(d => {
       let newData = {
         state: d.state
       };
 
-      if (value === "Total") 
-      {
+      if (value === "Total") {
         newData.TotalDonors = parseInt(d.TotalDonors);
-      } 
-      else 
-      {
+      }
+      else {
         newData.MaleDonors = parseInt(d.MaleDonors);
         newData.FemaleDonors = parseInt(d.FemaleDonors);
       }
@@ -238,18 +247,17 @@ Promise.all([
       return newData;
     });
 
-
     // Define scales for the bar graph
     let xScale;
-  if (value === "Total") {
-    xScale = d3.scaleLinear()
-      .domain([0, 2 * d3.max(barData, d => d.TotalDonors)])
-      .range([0, chartWidth]);
-  } else {
-    xScale = d3.scaleLinear()
-      .domain([0, 2 * d3.max(barData, d => d.MaleDonors + d.FemaleDonors)])
-      .range([0, chartWidth]);
-  }
+    if (value === "Total") {
+      xScale = d3.scaleLinear()
+        .domain([0, 2 * d3.max(barData, d => d.TotalDonors)])
+        .range([0, chartWidth]);
+    } else {
+      xScale = d3.scaleLinear()
+        .domain([0, 2 * d3.max(barData, d => d.MaleDonors + d.FemaleDonors)])
+        .range([0, chartWidth]);
+    }
     let yScale = d3.scaleBand()
       .domain(barData.map(d => d.state))
       .range([0, chartHeight])
@@ -257,37 +265,37 @@ Promise.all([
 
     // Append bars to the bar graph
     barGraph.selectAll(".barGroup")
-    .data(barData)
-    .enter().append("g")
-    .attr("class", "barGroup")
-    .attr("transform", d => `translate(0, ${yScale(d.state)})`)
-    .each(function (d) {
-      if (value === "Total") {
-        d3.select(this).append("rect")
-          .attr("class", "bar")
-          .attr("x", 0)
-          .attr("y", 0)
-          .attr("width", xScale(d.TotalDonors))
-          .attr("height", yScale.bandwidth())
-          .style("fill", "steelblue");
-      } else {
-        d3.select(this).append("rect")
-          .attr("class", "maleBar")
-          .attr("x", 0)
-          .attr("y", 0)
-          .attr("width", d => xScale(d.MaleDonors))
-          .attr("height", yScale.bandwidth() / 2)
-          .style("fill", "steelblue");
+      .data(barData)
+      .enter().append("g")
+      .attr("class", "barGroup")
+      .attr("transform", d => `translate(0, ${yScale(d.state)})`)
+      .each(function (d) {
+        if (value === "Total") {
+          d3.select(this).append("rect")
+            .attr("class", "bar")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", xScale(d.TotalDonors))
+            .attr("height", yScale.bandwidth())
+            .style("fill", "steelblue");
+        } else {
+          d3.select(this).append("rect")
+            .attr("class", "maleBar")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", d => xScale(d.MaleDonors))
+            .attr("height", yScale.bandwidth() / 2)
+            .style("fill", "steelblue");
 
-        d3.select(this).append("rect")
-          .attr("class", "femaleBar")
-          .attr("x", 0)
-          .attr("y", yScale.bandwidth() / 2)
-          .attr("width", d => xScale(d.FemaleDonors))
-          .attr("height", yScale.bandwidth() / 2)
-          .style("fill", "lightblue");
-      }
-    })
+          d3.select(this).append("rect")
+            .attr("class", "femaleBar")
+            .attr("x", 0)
+            .attr("y", yScale.bandwidth() / 2)
+            .attr("width", d => xScale(d.FemaleDonors))
+            .attr("height", yScale.bandwidth() / 2)
+            .style("fill", "lightblue");
+        }
+      })
       .on("mouseover", function (d) {
         // Mouseover event handler for tooltip
         div.style("opacity", .9);
@@ -325,7 +333,7 @@ Promise.all([
     barGraph.append("g")
       .attr("class", "x-axis")
       .attr("transform", `translate(0, ${chartHeight})`)
-      .call(d3.axisBottom(xScale).ticks(5));
+      .call(d3.axisBottom(xScale).ticks(15));
   }
 
   // Function to handle hovering over a state in the choropleth map
