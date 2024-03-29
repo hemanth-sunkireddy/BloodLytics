@@ -1,10 +1,12 @@
 let result;
 
 document.addEventListener('DOMContentLoaded', async function () {
+
+    // Get references to slider and black_white_or_color elements
     const importexportSlider = document.getElementById('slider');
     const black_white_or_color = document.getElementById('bw_or_color');
-    let slidervalue = importexportSlider.value;
-    let black_or_color = black_white_or_color.value;
+    let slidervalue = importexportSlider.value;   // Store initial slider value
+    let black_or_color = black_white_or_color.value;   // Store initial color preference
     // Set up the SVG dimensions
     const width = 1296;
     const height = 724;
@@ -41,13 +43,15 @@ document.addEventListener('DOMContentLoaded', async function () {
     let percentage4;
     let percentage5;
 
+     // Function to draw colors on the map based on slider value and color preference
     function draw_colors_to_map(slider_value, black_or_color) {
+        // Define percentages for color scaling
         percentage1 = 50
         percentage2 = 40
         percentage3 = 30
         percentage4 = 20
 
-        // console.log(black_or_color);
+        // // Set colors based on color preference
         if (black_or_color == 1) {
             color_to_draw1 = "FFFFFF";
             color_to_draw2 = "CCCCCC";
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
         let world_map_or_horizontal_bar_graph = 1;
+        // Adjust percentages and visualization type based on slider value
         if (slider_value == 2) {
             world_map_or_horizontal_bar_graph = 2;
             percentage1 = 35;
@@ -115,13 +120,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             world_map_or_horizontal_bar_graph = 8;
         }
         let temporary_check_int = 0;
-        // console.log(world_map_or_horizontal_bar_graph)
+
         // Load the GeoJSON data
         d3.json("Maps_JSON/world-countries.json").then(function (world) {
             // Draw the countries
             const TotalCountries = world.features;
             // console.log(TotalCountries.length);
 
+            // Extract data from CSV
             let ExtractedData = [];
             for (let i = 0; i < data.length; i++) {
 
@@ -153,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
 
-            svg.selectAll("path").remove();
+            svg.selectAll("path").remove();    // Remove existing paths
 
             svg.selectAll("path")
                 .data(world.features)
@@ -163,11 +169,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // console.log(d.id);
                     let small_temporary_check = 0;
                     for (let j = 0; j < ExtractedData.length; j++) {
-                        // console.log(ExtractedData.length);
-                        // console.log(ExtractedData);
-                        // console.log(ExtractedData[j][0]);
-                        // console.log(d.properties.name);
-                        // console.log(world_map_or_horizontal_bar_graph);
+                        
                         if (ExtractedData[j][0] == d.properties.name) {
                             temporary_check_int = temporary_check_int + 1;
                             var individualCountryExportData = ExtractedData[j][world_map_or_horizontal_bar_graph];
@@ -177,6 +179,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                             // console.log(world_map_or_horizontal_bar_graph);
                             // console.log(d.properties.name);
 
+                            // Determine fill color based on data
                             if (result > percentage1) {
                                 console.log("TEST AGAIN");
                                 // console.log(individualCountryExportData);
