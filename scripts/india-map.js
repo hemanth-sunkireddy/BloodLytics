@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       color4 = "FF6347";
       color5 = "000000";
     }
+    console.log("HELLO");
+
     // console.log(black_or_color);
     svg.selectAll("path").remove();
     svg.selectAll("path")
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         for (let i = 0; i < bloodDonationPercentage.length; i++) {
           let color_of_state = bloodDonationPercentage[i].VBDPercentage;
           if (india.id == bloodDonationPercentage[i].State) {
-            // console.log(color_of_state);
+            console.log(color_of_state);
             if (color_of_state > 80) {
               // console.log(color1);
               return "#" + color1;

@@ -244,13 +244,11 @@
         function updateColors() {
             var blackOrWhite = parseInt(Slider.value);
 
-            console.log(blackOrWhite);
             var firstColor = document.getElementById('color1_text');
             var secondColor = document.getElementById('color2_text');
             var thirdColor = document.getElementById('color3_text');
             var fourthColor = document.getElementById('color4_text');
 
-            console.log(firstColor, secondColor, thirdColor, fourthColor);
 
             if (blackOrWhite == 1) {
                 firstColor.innerHTML = '>80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
