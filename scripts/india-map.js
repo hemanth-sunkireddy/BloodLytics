@@ -22,11 +22,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     .fitSize([width, height], india_states); // Updated fitSize instead of fitHeight
   var path = d3.geoPath()
     .projection(projection);
-
-  let bloodDonationPercentage = await d3.csv("../Data_Sets/VoluntaryPercentage.csv");
+  
+    console.log("HELLO");
   // console.log(bloodDonationPercentage[0].VBDPercentage);
   // Draw map
-  function draw_colors_to_map(black_or_color) {
+  async function draw_colors_to_map(black_or_color) {
+    const bloodDonationPercentage = await d3.csv("../Data_Sets/VoluntaryPercentage.csv");
+    console.log(bloodDonationPercentage);
     let color1 = "FFFFFF";
     let color2 = "CCCCCC";
     let color3 = "999999";
@@ -79,8 +81,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         let percentage_of_state = 0;
         for (let i = 0; i < bloodDonationPercentage.length; i++) {
           if (d.id == bloodDonationPercentage[i].State) {
-          percentage_of_state = bloodDonationPercentage[i].VBDPercentage;
-          console.log(percentage_of_state);
+            percentage_of_state = bloodDonationPercentage[i].VBDPercentage;
+            console.log(percentage_of_state);
           }
 
         }
