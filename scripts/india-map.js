@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   var path = d3.geoPath()
     .projection(projection);
 
-  let bloodDonationPercentage = await d3.csv("../Data_Sets/voluntary-donation-percentages.csv");
+  let bloodDonationPercentage = await d3.csv("../Data_Sets/VoluntaryPercentage.csv");
   // console.log(bloodDonationPercentage[0].VBDPercentage);
   // Draw map
   function draw_colors_to_map(black_or_color) {
