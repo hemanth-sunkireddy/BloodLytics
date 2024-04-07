@@ -20,177 +20,261 @@
 
 </head>
 
-<body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
+
+<!-- Start Header Area -->
+<header class="header navbar-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="nav-inner">
+                    <!-- Start Navbar -->
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="assets/images/BloodLytics.png" alt="Logo" style="width: 120%; height: 120%;">
+                        </a>
+                        <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <ul id="nav" class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="dd-menu active collapsed" href="index.html" data-bs-toggle="collapse"
+                                        data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent"
+                                        aria-expanded="false" aria-label="Toggle navigation">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="sub-menu collapse" id="submenu-1-2">
+                                        <li class="nav-item"><a href="index.html#about">About</a></li>
+                                        <li class="nav-item"><a href="index.html#visualisations">Visualisations</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="index.html#about" aria-label="Toggle navigation">About</a>
+                                </li>
+                            </ul>
+                        </div> <!-- navbar collapse -->
+                        <div class="button">
+                            <a href="index.html#visualisations" class="signup">Visualisations</a>
+                        </div>
+                    </nav>
+                    <!-- End Navbar -->
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</header>
+<!-- End Header Area -->
+
+
+<!-- Start Services Area -->
+<section class="services section mt-10" style="background-color: white;">
+
+    <div class="container" id="visualisations">
+        <div class="section-title">
+            <h3 class="wow zoomIn" data-wow-delay=".2s">Indian States Voluntary Blood Donation Percentage</h3>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 wow fadeInUp" data-wow-delay=".4s">
+                <div class="single-service one" style="background-color: aqua;">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-4 col-12">
+                            <!-- Content for the second column goes here -->
+                            <p style="font-weight: bold;">B&W &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Color
+                            </p>
+                            <input type="range" min="1" max="2" value="1" class="slider" id="bw_or_color" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 wow fadeInUp" data-wow-delay=".4s">
+
+
+                <div class="single-service one" style="background-color: #D6EAF8;">
+                    <div class="row align-items-center">
+
+                        <div class="col-lg-6 col-md-4 col-12">
+                            <div>
+
+                                <div class="row">
+
+                                    <div class="col-md-4 col-6">
+                                        <p style="font-weight: 1000; color: blue">Voluntary Blood Donation Percentage
+                                        </p>
+                                        <p id="color1_text">>80% <span><svg width="14" height="14">
+                                                    <circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color">
+                                                    </circle>
+                                                </svg></span></p>
+                                        <p id="color2_text">>70%<span><svg width="14" height="14">
+                                                    <circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color">
+                                                    </circle>
+                                                </svg></span></p>
+                                        <p id="color3_text">>60% <span><svg width="14" height="14">
+                                                    <circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color">
+                                                    </circle>
+                                                </svg></span></p>
+                                        <p id="color4_text">>50%<span><svg width="14" height="14">
+                                                    <circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color">
+                                                    </circle>
+                                                </svg></span></p>
+
+
+                                        <p>Less than 50% <span><svg width="14" height="14">
+                                                    <circle cx="7" cy="7" r="7" fill="black"></circle>
+                                                </svg></span></p>
+                                    </div>
+
+                                    <div class="col-6 flex">
+                                        <p id="dynamic">Uttar Pradesh, Meghalaya,Manipur, Assam, Chhattisgarh have Voluntary Blood
+                                            Donations Less than 50% compared to Replacement and Family Blood Donations. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="india-map"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-12">
+
+                            <!-- <div id="world-map"></div> -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- /End Preloader -->
+</section>
 
-
-    <!-- Start Header Area -->
-    <header class="header navbar-area">
+<!-- Start Footer Area -->
+<footer class="footer section">
+    <!-- Start Footer Top -->
+    <div class="footer-top">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="nav-inner">
-                        <!-- Start Navbar -->
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
-                                <img src="assets/images/BloodLytics.png" alt="Logo" style="width: 120%; height: 120%;">
-                            </a>
-                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul id="nav" class="navbar-nav ms-auto">
-                                    
-                                    <li class="nav-item">
-                                        <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="index.html">Home</a></li>
-                                            <li class="nav-item"><a href="index.html#visualisations">Visualisations</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index.html" aria-label="Toggle navigation">Home</a>
-                                    </li>
-                                </ul>
-                            </div> <!-- navbar collapse -->
-                            <div class="button">
-                                <a href="index.html#visualisations" class="signup">Visualisations</a>
-                            </div>
-                        </nav>
-                        <!-- End Navbar -->
+            <div class="inner-content">
+                <div class="row">
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer f-link">
+                            <h3>Team</h3>
+                            <ul>
+                                <li><a href="https://github.com/hemanth-sunkireddy">Hemanth Sunkireddy</a></li>
+                                <li><a href="javascript:void(0)">Bharath Gajawada</a></li>
+                                <li><a href="javascript:void(0)">Jagankrishna Nallasingu</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
                     </div>
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </header>
-    <!-- End Header Area -->
 
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer newsletter">
+                            <h3>Data Visualisation Project</h3>
+                            <div>
+                                <p>Phase 1 Report</p>
+                                <a class="sub-btn"
+                                    href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
+                                        class="lni lni-paperclip w-100 h-100"></i>
+                                </a>
+                                <p>Phase 2 Report</p>
+                                <a class="sub-btn"
+                                    href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
+                                        class="lni lni-paperclip w-100 h-100"></i>
+                                </a>
+                                <a class="sub-btn" href="https://youtu.be/nkydSQRsNBQ"><i
+                                        class="lni lni-youtube"></i></a>
+                            </div>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
 
-    <!-- Start Hero Area -->
-    <!-- Start Services Area -->
-    <section class="services section mt-10" style="background-color: white;">
-        <div class="container" id="visualisations">
-            <div class="section-title">
-                <h3 class="wow zoomIn" data-wow-delay=".2s">Distribution of types of Blood Donations in India</h3>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12 wow fadeInUp" data-wow-delay=".4s" style="background-color: #90ee90;">
-                    <!-- Start Single Service -->
-                    <div class="single-service one row align-items-center" style="background-color: #90ee90;">
-                        <h3>Blood Donations Types in India</h3>
-                        <div id="postContents" ; style="text-align:center;">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer newsletter">
+                            <div class="row">
+                                <a href="https://github.com/hemanth-sunkireddy/BloodLytics">
+                                    <img src="assets/images/github.png" width="10%">
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
+                                    <img src="assets/images/youtube.png" width="10%">
+                                </a>
+                                <a href="https://hemanth-sunkireddy.github.io/BloodLytics/">
+                                    <img src="assets/images/brand.png" width="13%" class="m-lg-0">
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <!-- End Single Service -->
+
+
                 </div>
             </div>
         </div>
-    </section>
-    </section>
+    </div>
+    <!--/ End Footer Top -->
+</footer>
+<!--/ End Footer Area -->
 
-    <!-- Start Footer Area -->
-    <footer class="footer section">
-        <!-- Start Footer Top -->
-        <div class="footer-top">
-            <div class="container">
-                <div class="inner-content">
-                    <div class="row">
+<!-- ========================= scroll-top ========================= -->
+<a href="#" class="scroll-top">
+    <i class="lni lni-chevron-up"></i>
+</a>
 
-                        <div class="col-lg-2 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>Team</h3>
-                                <ul>
-                                    <li><a href="https://github.com/hemanth-sunkireddy">Hemanth Sunkireddy</a></li>
-                                    <li><a href="javascript:void(0)">Bharath Gajawada</a></li>
-                                    <li><a href="javascript:void(0)">Jagankrishna Nallasingu</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
+<!-- ========================= JS here ========================= -->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/tiny-slider.js"></script>
+<script src="assets/js/glightbox.min.js"></script>
+<script src="assets/js/count-up.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/d3.v7.js"></script>
+<script src="scripts/d3-geo-projection.v2.min.js"></script>
+<script src="scripts/d3-scale-chromatic.v1.min.js"></script>
+<script src="scripts/india-map.js"></script>
+<script>
 
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer newsletter">
-                                <h3>Data Visualisation Project</h3>
-                                <div>
-                                    <p>Phase 1 Report</p>
-                                    <a class="sub-btn"
-                                        href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
-                                            class="lni lni-paperclip w-100 h-100"></i>
-                                    </a>
-                                    <p>Phase 2 Report</p>
-                                    <a class="sub-btn"
-                                        href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
-                                            class="lni lni-paperclip w-100 h-100"></i>
-                                    </a>
-                                    <a class="sub-btn" href="https://youtu.be/nkydSQRsNBQ"><i
-                                            class="lni lni-youtube"></i></a>
-                                </div>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
+    document.addEventListener('DOMContentLoaded', function () {
+        var Slider = document.getElementById('bw_or_color');
+        function updateColors() {
+            var blackOrWhite = parseInt(Slider.value);
 
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer newsletter">
-                                <div class="row">
-                                    <a href="https://github.com/hemanth-sunkireddy/BloodLytics">
-                                        <img src="assets/images/github.png" width="10%">
-                                    </a>
-                                    <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
-                                        <img src="assets/images/youtube.png" width="10%">
-                                    </a>
-                                    <a href="https://hemanth-sunkireddy.github.io/BloodLytics/">
-                                        <img src="assets/images/brand.png" width="13%" class="m-lg-0">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            console.log(blackOrWhite);
+            var firstColor = document.getElementById('color1_text');
+            var secondColor = document.getElementById('color2_text');
+            var thirdColor = document.getElementById('color3_text');
+            var fourthColor = document.getElementById('color4_text');
 
+            console.log(firstColor, secondColor, thirdColor, fourthColor);
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Footer Top -->
-    </footer>
-    <!--/ End Footer Area -->
+            if (blackOrWhite == 1) {
+                firstColor.innerHTML = '>80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                secondColor.innerHTML = '>70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                thirdColor.innerHTML = '>60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                fourthColor.innerHTML = '>50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+            } else {
+                firstColor.innerHTML = '>80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
+                secondColor.innerHTML = '>70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
+                thirdColor.innerHTML = '>60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
+                fourthColor.innerHTML = '>50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top">
-        <i class="lni lni-chevron-up"></i>
-    </a>
+            }
+        }
 
-    <!-- ========================= JS here ========================= -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/tiny-slider.js"></script>
-    <script src="assets/js/glightbox.min.js"></script>
-    <script src="assets/js/count-up.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- <script src="https://d3js.org/d3.v7.js"></script> -->
-    <script src="scripts/india-map.js"></script>
+        updateColors();
 
+        Slider.addEventListener('input', function () {
+            updateColors();
+        });
 
-    <!-- Adding Graph Files -->
-    <script src="assets/js/d3-geo-projection.v2.min.js"></script>
-    <script src="assets/js/d3-scale-chromatic.v1.min.js"></script>
-    <script src="scripts/world-map.js"></script>
+    });
+
+</script>
 
 </body>
 

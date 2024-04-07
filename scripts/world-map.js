@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     }
 
                 })
-                .attr("stroke", "white")
+                .attr("stroke", "#000080")
                 .attr("stroke-width", 2)
                 .on("mouseover", function (event, d, i) {
                     let point = this.getAttribute('class');
