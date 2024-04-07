@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   // console.log(bloodDonationPercentage[0].VBDPercentage);
   // Draw map
   async function draw_colors_to_map(black_or_color) {
-    const bloodDonationPercentage = await d3.csv("../Data_Sets/VoluntaryPercentage.csv");
+    const bloodDonationPercentage = await d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/VoluntaryPercentage.csv");
     console.log(bloodDonationPercentage);
     let color1 = "FFFFFF";
     let color2 = "CCCCCC";
