@@ -5,6 +5,9 @@
 https://hemanth-sunkireddy.github.io/BloodLytics
 ```
 
+![home-page](https://github.com/hemanth-sunkireddy/BloodLytics/assets/117459441/9263a9e5-f654-4fa1-ae31-d0d197c9921e)
+
+
 ## BloodLytics: Visualising Blood Donation Statistics
 
 This project revolves around a detailed analysis of blood donation statistics, including 
