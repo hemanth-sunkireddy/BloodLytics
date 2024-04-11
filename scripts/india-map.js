@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   const pie = d3.pie();
 
-  const data_of_india = await d3.csv("../Data_Sets/2021_Blood_Donation_Types.csv")
+  const data_of_india = await d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/2021_Blood_Donation_Types.csv")
   let percentages = [];
   for (let i = 0; i < data_of_india.length; i++) {
     let individual_country_total_donations = Number(data_of_india[i].FamilyMaleDonors) + Number(data_of_india[i].FamilyFemaleDonors) + Number(data_of_india[i].ReplacementMaleDonors) + Number(data_of_india[i].ReplacementFemaleDonors) + Number(data_of_india[i].VoluntaryMaleDonors) + Number(data_of_india[i].VoluntaryFemaleDonors);
