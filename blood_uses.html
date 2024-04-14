@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do you wanna know where the donated blood used?</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <style>
+    /* Add your CSS styling here */
+    body {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: lightgray;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .bar {
+      fill: steelblue;
+    }
+
+    .bar:hover {
+      fill: orange;
+    }
+
+    .bar text {
+      fill: white;
+      font-size: 14px;
+    }
+
+    .tooltip {
+      position: absolute;
+      text-align: center;
+      padding: 6px;
+      font: 12px sans-serif;
+      background: lightsteelblue;
+      border: 0px;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    #heading {
+      font-size: 32px;
+      color: black;
+      margin-bottom: 20px;
+    }
+
+    #chart-container {
+      border: 1px solid orange;
+      padding: 20px;
+      background-color: whitesmoke;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+      margin-right: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .bar {
+      fill: steelblue;
+    }
+
+    .bar:hover {
+      fill: orange;
+    }
+
+    .axis-x path,
+    .axis-x line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .axis-y path,
+    .axis-y line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .tooltip {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip.visible {
+      opacity: 1;
+    }
+
+    #additional-chart-container {
+      width: 750px;
+      border: 1px solid black;
+      background-color: whitesmoke;
+      animation: fadeIn 2s ease forwards;
+      margin-left: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 id="heading">Do you wanna know where the donated blood used?</h1>
+
+  <div id="chart-container">
+    <h2 id="chart-heading">Blood used in various Domains (in Numbers)</h2>
+    <svg id="chart" width="650" height="450"></svg>
+  </div>
+
+  <div class="tooltip"></div>
+
+  <select id="domain-dropdown">
+    <option>Select Domain</option>
+    <option value="Medicine">Medicine</option>
+    <option value="Surgery">Surgery</option>
+    <option value="ObstetricsGynaecology">Obstetrics & Gynaecology</option>
+    <option value="Pediatrics">Pediatrics</option>
+  </select>
+
+  <div id="additional-chart-container"></div>
+  <div id="" histo-chart"></div>
+  <script>
+
+    // Load main data from CSV file
+    d3.csv("../Data_Sets/totalRequirement.csv").then(function (data) {
+      // Data processing and visualization code for main chart goes here
+      var cleanedData = data.map(function (d) {
+        return {
+          specialty: d.Specialty,
+          beds: parseInt(d.Beds.replace(/,/g, '')), // Remove commas and parse as integer
+        };
+      });
+
+      var svg = d3.select("#chart"),
+        margin = { top: 40, right: 20, bottom: 30, left: 40 },
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom;
+
+      var x = d3.scaleBand().range([0, width]).padding(0.1),
+        y = d3.scaleLinear().range([height, 0]);
+
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      x.domain(cleanedData.map(function (d) { return d.specialty; }));
+      y.domain([0, 1700000]); // Set the y-axis domain
+
+      g.append("g")
+        .attr("class", "axis-x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+      g.append("g")
+        .attr("class", "axis-y")
+        .call(d3.axisLeft(y).ticks(10).tickFormat(d3.format(".2s")));
+
+      var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("opacity", 0);
+
+      g.selectAll(".bar")
+        .data(cleanedData)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function (d) { return x(d.specialty); })
+        .attr("y", height)
+        .attr("width", x.bandwidth() - 50)
+        .attr("height", 0)
+        .transition()
+        .duration(1400)
+        .attr("y", function (d) { return y(d.beds); })
+        .attr("height", function (d) { return height - y(d.beds); });
+
+      g.selectAll(".bar")
+        .on("mouseover", function (event, d) {
+          tooltip.transition()
+            .duration(200)
+            .style("opacity", .9);
+          tooltip.html("Beds: " + d.beds)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 30) + "px");
+        })
+        .on("mouseout", function (d) {
+          tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
+        });
+
+      // Add text to the right of the chart
+      // Add text to the right of the chart
+
+      // Fade in the chart container
+      d3.select("#chart-container").style("opacity", 1);
+      ///////////////////++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      ///////////////////+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // Dropdown change event
+      d3.select("#domain-dropdown").on("change", function () {
+        var selectedDomain = d3.select(this).property("value");
+        var additionalChartContainer = d3.select("#additional-chart-container");
+
+        // Remove existing additional charts
+        additionalChartContainer.selectAll("*").remove();
+
+        if (selectedDomain === "Medicine") {
+          // Remove existing additional charts
+          additionalChartContainer.selectAll("*").remove();
+
+          // Define the dimensions for the chart
+          const width = 600;
+          const height = 300;
+          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+
+          // Create SVG element
+          const svg = additionalChartContainer.append("svg")
+            .attr("id", "chart")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .style("border", "10px solid #") // Add border
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+          // Read the data from CSV
+          d3.csv("../Data_Sets/Medicine.csv").then(function (data) {
+            // Convert string to number where necessary
+            data.forEach(function (d) {
+              d.Demand = +d.Demand;
+              d.Percent = +d['%'];
+            });
+
+            // Define X and Y scales
+            const xScale = d3.scaleLinear()
+              .domain([0, d3.max(data, d => d.Demand)])
+              .range([0, width]);
+
+            const yScale = d3.scaleBand()
+              .domain(data.map(d => d.Disease))
+              .range([0, height])
+              .padding(0.1);
+
+            // Draw bars
+            const bars = svg.selectAll(".bar")
+              .data(data)
+              .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", 0)
+              .attr("y", d => yScale(d.Disease))
+              .attr("width", 0)
+              .attr("height", yScale.bandwidth())
+              .on("mouseover", function (event, d) {
+                tooltip.style("opacity", 1)
+                  .html(`<strong>${d.Disease}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+                  .style("left", (event.pageX) + "px")
+                  .style("top", (event.pageY - 28) + "px");
+              })
+              .on("mouseout", function () {
+                tooltip.style("opacity", 0);
+              });
+
+            // Animation
+            bars.transition()
+              .duration(1000)
+              .attr("width", d => xScale(d.Demand));
+
+            // Draw text labels
+            svg.selectAll(".label")
+              .data(data)
+              .enter().append("text")
+              .attr("class", "label")
+              .attr("x", d => xScale(d.Demand) + 5)
+              .attr("y", d => yScale(d.Disease) + yScale.bandwidth() / 2)
+              .attr("dy", "0.35em")
+              .text(d => d.Demand.toLocaleString());
+
+            // Draw Y axis
+            svg.append("g")
+              .attr("class", "y axis")
+              .call(d3.axisLeft(yScale));
+
+            // Draw X axis
+            svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", `translate(0,${height})`)
+              .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
+
+            // Tooltip element
+            const tooltip = d3.select("body").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+          });
+
+        } else if (selectedDomain === "Surgery") {
+          // Load and visualize Surgery data
+          additionalChartContainer.selectAll("*").remove();
+
+          // Define the dimensions for the chart
+          const width = 600;
+          const height = 300;
+          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+
+          // Create SVG element
+          const svg = additionalChartContainer.append("svg")
+            .attr("id", "chart")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .style("border", "10px solid #") // Add border
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+          // Read the data from CSV
+          d3.csv("../Data_Sets/Surgery.csv").then(function (data) {
+            // Convert string to number where necessary
+            data.forEach(function (d) {
+              d.Demand = parseInt(d.Demand.replace(/,/g, '')); // Remove commas before parsing
+              d.Percent = +d['Blood_usage%']; // Convert percentage string to number
+            });
+
+            // Define X and Y scales
+            const xScale = d3.scaleLinear()
+              .domain([0, d3.max(data, d => d.Demand)])
+              .range([0, width]);
+
+            const yScale = d3.scaleBand()
+              .domain(data.map(d => d.Surgery))
+              .range([0, height])
+              .padding(0.1);
+
+            // Draw bars
+            const bars = svg.selectAll(".bar")
+              .data(data)
+              .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", 0)
+              .attr("y", d => yScale(d.Surgery))
+              .attr("width", 0)
+              .attr("height", yScale.bandwidth())
+              .on("mouseover", function (event, d) {
+                tooltip.style("opacity", 1)
+                  .html(`<strong>${d.Surgery}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+                  .style("left", (event.pageX) + "px")
+                  .style("top", (event.pageY - 28) + "px");
+              })
+              .on("mouseout", function () {
+                tooltip.style("opacity", 0);
+              });
+
+            // Animation
+            bars.transition()
+              .duration(1000)
+              .attr("width", d => xScale(d.Demand));
+
+            // Draw text labels
+            svg.selectAll(".label")
+              .data(data)
+              .enter().append("text")
+              .attr("class", "label")
+              .attr("x", d => xScale(d.Demand) + 5)
+              .attr("y", d => yScale(d.Surgery) + yScale.bandwidth() / 2)
+              .attr("dy", "0.35em")
+              .text(d => d.Demand.toLocaleString());
+
+            // Draw Y axis
+            svg.append("g")
+              .attr("class", "y axis")
+              .call(d3.axisLeft(yScale));
+
+            // Draw X axis
+            svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", `translate(0,${height})`)
+              .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
+
+            // Tooltip element
+            const tooltip = d3.select("body").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+          });
+
+        } else if (selectedDomain === "ObstetricsGynaecology") {
+          // Load and visualize Obstetrics & Gynaecology data
+          additionalChartContainer.selectAll("*").remove();
+
+          // Define the dimensions for the chart
+          const width = 600;
+          const height = 300;
+          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+
+          // Create SVG element
+          const svg = additionalChartContainer.append("svg")
+            .attr("id", "chart")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+          // Read the data from CSV
+          d3.csv("../Data_Sets/ObstetricsGynaecology.csv").then(function (data) {
+            // Convert string to number where necessary
+            data.forEach(function (d) {
+              d.Demand = +d.Demand.replace(/,/g, ''); // Remove commas from Demand values
+              d.Percent = +d['%'];
+            });
+
+            // Define X and Y scales
+            const xScale = d3.scaleLinear()
+              .domain([0, d3.max(data, d => d.Demand)])
+              .range([0, width]);
+
+            const yScale = d3.scaleBand()
+              .domain(data.map(d => d.ObstetricsGynaecology))
+              .range([0, height])
+              .padding(0.1);
+
+            // Draw bars
+            const bars = svg.selectAll(".bar")
+              .data(data)
+              .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", 0)
+              .attr("y", d => yScale(d.ObstetricsGynaecology))
+              .attr("width", 0)
+              .attr("height", yScale.bandwidth())
+              .on("mouseover", function (event, d) {
+                tooltip.style("opacity", 1)
+                  .html(`<strong>${d.ObstetricsGynaecology}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+                  .style("left", (event.pageX) + "px")
+                  .style("top", (event.pageY - 28) + "px");
+              })
+              .on("mouseout", function () {
+                tooltip.style("opacity", 0);
+              });
+
+            // Animation
+            bars.transition()
+              .duration(1000)
+              .attr("width", d => xScale(d.Demand));
+
+            // Draw text labels
+            svg.selectAll(".label")
+              .data(data)
+              .enter().append("text")
+              .attr("class", "label")
+              .attr("x", d => xScale(d.Demand) + 5)
+              .attr("y", d => yScale(d.ObstetricsGynaecology) + yScale.bandwidth() / 2)
+              .attr("dy", "0.35em")
+              .text(d => d.Demand.toLocaleString());
+
+            // Draw Y axis
+            svg.append("g")
+              .attr("class", "y axis")
+              .call(d3.axisLeft(yScale));
+
+            // Draw X axis
+            svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", `translate(0,${height})`)
+              .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
+
+            // Tooltip element
+            const tooltip = d3.select("body").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+          });
+
+
+        } else if (selectedDomain === "Pediatrics") {
+          // Load and visualize Pediatrics data
+          additionalChartContainer.selectAll("*").remove();
+
+          // Define the dimensions for the chart
+          const width = 600;
+          const height = 300;
+          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+
+          // Create SVG element
+          const svg = additionalChartContainer.append("svg")
+            .attr("id", "chart")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .style("border", "10px solid pink") // Add border
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+          // Read the data from CSV
+          d3.csv("../Data_Sets/Pediatrics.csv").then(function (data) {
+            // Convert string to number where necessary
+            data.forEach(function (d) {
+              d.Demand = parseInt(d.Demand.replace(/,/g, '')); // Remove commas and parse as integer
+              d.Percent = +d['Blood_usage%']; // Convert percentage string to number
+            });
+
+            // Define X and Y scales
+            const xScale = d3.scaleLinear()
+              .domain([0, d3.max(data, d => d.Demand)])
+              .range([0, width]);
+
+            const yScale = d3.scaleBand()
+              .domain(data.map(d => d.Pediatrics))
+              .range([0, height])
+              .padding(0.1);
+
+            // Draw bars
+            const bars = svg.selectAll(".bar")
+              .data(data)
+              .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", 0)
+              .attr("y", d => yScale(d.Pediatrics))
+              .attr("width", 0)
+              .attr("height", yScale.bandwidth())
+              .on("mouseover", function (event, d) {
+                tooltip.style("opacity", 1)
+                  .html(`<strong>${d.Pediatrics}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+                  .style("left", (event.pageX) + "px")
+                  .style("top", (event.pageY - 28) + "px");
+              })
+              .on("mouseout", function () {
+                tooltip.style("opacity", 0);
+              });
+
+            // Animation
+            bars.transition()
+              .duration(1000)
+              .attr("width", d => xScale(d.Demand));
+
+            // Draw text labels
+            svg.selectAll(".label")
+              .data(data)
+              .enter().append("text")
+              .attr("class", "label")
+              .attr("x", d => xScale(d.Demand) + 5)
+              .attr("y", d => yScale(d.Pediatrics) + yScale.bandwidth() / 2)
+              .attr("dy", "0.35em")
+              .text(d => d.Demand.toLocaleString());
+
+            // Draw Y axis
+            svg.append("g")
+              .attr("class", "y axis")
+              .call(d3.axisLeft(yScale));
+
+            // Draw X axis
+            svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", `translate(0,${height})`)
+              .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
+
+            // Tooltip element
+            const tooltip = d3.select("body").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+          }).catch(function (error) {
+            console.log("Error loading the data for Pediatrics");
+          });
+        }
+
+      });
+      
+    }).catch(function (error) {
+      console.log("Error loading the main data");
+    });
+  </script>
+</body>
+
+</html>
