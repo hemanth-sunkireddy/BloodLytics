@@ -259,9 +259,17 @@ document.addEventListener('DOMContentLoaded', async function () {
           .style("opacity", 1)
           .style('visibility', "visible");
 
+        d3.select(this)
+          .style("stroke-width", 5)
+
+
+
       })
       .on("mouseout", (d) => {
         tooltip.style('visibility', "hidden");
+
+        svg.selectAll("path")
+        .style("stroke-width", 1)
       });
 
 
@@ -352,7 +360,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           .attr("stroke-width", "2px");  // Restore original stroke width
       });
 
-      pie_chart.selectAll("text").remove();
+    pie_chart.selectAll("text").remove();
 
     // Append text elements for state names
     pie_chart.selectAll("text")

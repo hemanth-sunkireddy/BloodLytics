@@ -218,7 +218,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // console.log(point);
 
                     // console.log(this);
-                    // d3.select(this).style("fill", "orange");
+                    d3.select(this)
+                                   .attr("stroke-width", 7);
                     // Calculate the position of the tooltip relative to the SVG container
                     let result;
                     for (let j = 0; j < ExtractedData.length; j++) {
@@ -240,6 +241,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                 })
                 .on("mouseout", (d) => {
                     tooltip.style('visibility', "hidden");
+                    svg.selectAll("path")
+                                   .attr("stroke-width", 2);
                 });
             // console.log(temporary_check_int);
         });
