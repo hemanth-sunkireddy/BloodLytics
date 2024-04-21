@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             color_to_draw5 = "000000";
         }
         else if (black_or_color == 2) {
-            color_to_draw1 = "7FFF00";
-            color_to_draw2 = "FFA500";
-            color_to_draw3 = "9370DB";
-            color_to_draw4 = "FF6347";
+            color_to_draw1 = "662506";
+            color_to_draw2 = "cc4c02";
+            color_to_draw4 = "fee391";
+            color_to_draw3 = "fe9929";
             color_to_draw5 = "000000";
         }
 

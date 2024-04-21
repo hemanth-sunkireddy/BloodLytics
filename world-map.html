@@ -42,9 +42,7 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="dd-menu active collapsed" href="index.html" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Home</a>
+                                        <a  href="index.html">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <ul class="sub-menu collapse" id="submenu-1-2">
@@ -71,7 +69,7 @@
 
 
     <!-- Start Services Area -->
-    <section class="services section mt-10" style="background-color: white;">
+    <section class="services section " style="background-color: white;">
 
         <div class="container" id="visualisations">
             <div class="section-title">
@@ -84,8 +82,8 @@
                     <div class="single-service one" style="background-color: aquamarine">
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-md-4 col-12">
-                                <p class="fw-bold">Choose Blood Type</p>
-                                <p>O+ &nbsp;&nbsp; &nbsp;&nbsp; A+ &nbsp;&nbsp; &nbsp;&nbsp; B+ &nbsp;&nbsp; &nbsp;&nbsp;
+                                <p class="fw-bold" style="margin-left: 20%; margin-bottom: 1%; color: black;">Choose Blood Type</p>
+                                <p style="color: black;">O+ &nbsp;&nbsp; &nbsp;&nbsp; A+ &nbsp;&nbsp; &nbsp;&nbsp; B+ &nbsp;&nbsp; &nbsp;&nbsp;
                                     AB+ &nbsp;&nbsp; &nbsp;&nbsp; O- &nbsp;&nbsp; &nbsp;&nbsp; A- &nbsp;&nbsp; &nbsp;&nbsp;
                                     &nbsp;&nbsp; B- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; AB-</p>
                                 <input type="range" min="1" max="8" value="1" class="slider" id="slider"
@@ -93,7 +91,7 @@
                             </div>
                             <div class="col-lg-6 col-md-4 col-12">
                                 <!-- Content for the second column goes here -->
-                                <p style="font-weight: bold;">B&W &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Color
+                                <p style="font-weight: bold; color:black">B&W &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Color
                                 </p>
                                 <input type="range" min="1" max="2" value="1" class="slider" id="bw_or_color" />
                             </div>
@@ -116,32 +114,32 @@
                                     <div class="row">
 
                                         <div class="col-md-4 col-6">
-                                            <p style="font-weight: 1000; color: blue">Country Percentage</p>
-                                                <p id="color1_text">>50% <span><svg width="14" height="14">
+                                            <p style="font-weight: 1000; color: blue">Distribution of Group</p>
+                                                <p id="color1_text" style="color: black;">>50% <span><svg width="14" height="14">
                                                             <circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color">
                                                             </circle>
                                                         </svg></span></p>
-                                                <p id="color2_text">>40%<span><svg width="14" height="14">
+                                                <p id="color2_text" style="color: black;">>40%<span><svg width="14" height="14">
                                                             <circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color">
                                                             </circle>
                                                         </svg></span></p>
-                                                <p id="color3_text">>30% <span><svg width="14" height="14">
+                                                <p id="color3_text" style="color: black;">>30% <span><svg width="14" height="14">
                                                             <circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color">
                                                             </circle>
                                                         </svg></span></p>
-                                                <p id="color4_text">>20%<span><svg width="14" height="14">
+                                                <p id="color4_text" style="color: black;">>20%<span><svg width="14" height="14">
                                                             <circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color">
                                                             </circle>
                                                         </svg></span></p>
                                             
 
-                                            <p>Not Available <span><svg width="14" height="14">
+                                            <p style="color: black;"> Data not Available <span><svg width="14" height="14">
                                                         <circle cx="7" cy="7" r="7" fill="black"></circle>
                                                     </svg></span></p>
                                         </div>
 
                                         <div class="col-6 flex">
-                                            <p id="dynamic">Blood Type O is associated with high frequencies in Central and South America, and secondly highest in Southern Africa. </p>
+                                            <p id="dynamic" style="color: black; font-weight: bold;">Blood Type O is associated with high frequencies in Central and South America, and secondly highest in Southern Africa. </p>
                                         </div>
                                     </div>
                                 </div>
@@ -157,6 +155,11 @@
             </div>
         </div>
     </section>
+
+    <div style="text-align: center;">
+       <p style="font-weight: bolder; font-size: large;">ABO and Rh blood type distribution (2012 Year): <a href="https://en.wikipedia.org/wiki/Blood_type_distribution_by_country" style="color: #3366FF; text-decoration: none; font-weight: bold;"> Source Data Link</a></p>
+    </div>
+    
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -271,116 +274,117 @@
                 if (blackOrWhite == 1) {
                     if (percentageValue == 1) {
                         resultText.innerHTML = ' Blood Type O is associated with high frequencies in Central and South America, and secondly highest in Southern Africa. ';
-                        firstColor.innerHTML = '>50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>40% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>30% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>20% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '50 - 75% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '40 - 50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '30 - 40% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '20 - 30% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 2) {
                         resultText.innerHTML = 'Blood group A is associated with high frequencies in Europe, especially in Scandinavia and Central Europe, although its highest frequencies occur in some Australian Aboriginal populations and the Blackfoot Indians of Montana, US.';
-                        firstColor.innerHTML = '>35% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>27% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>20% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>10% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '35 - 47% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '27 - 35% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '20 - 27% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '10 - 20% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 3) {
                         resultText.innerHTML = 'Blood group B has its highest frequency in the Middle East, where it ranks as the largest share of the population. In Southeast Asia its share of the population is lowest, especially in Indonesia, secondarily in East Asia, Northern Asia and neighboring Central Asia,';
-                        firstColor.innerHTML = '>16.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>10% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '16.5 - 37% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '10 - 16.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '5 - 10% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '1 - 5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 4) {
                         resultText.innerHTML = 'Blood type AB is the most recent blood type and didn’t occur until the 16th Century when group A populations from Europe and group B populations from Asia began to mix.'
-                        firstColor.innerHTML = '>6.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>5.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>3.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.4% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '6.9 - 15% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '5.5 - 6.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '3.9 - 5.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.4 - 3.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 5) {
                         resultText.innerHTML = ' Blood type O is associated with high frequencies in Central and South America, and secondly highest in Southern Africa. ';
-                        firstColor.innerHTML = '>6.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>4.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '6.5 - 13% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '4.5 - 6.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '1 - 4.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 6) {
                         resultText.innerHTML = 'Blood type A is associated with high frequencies in Europe, especially in Scandinavia and Central Europe, although its highest frequencies occur in some Australian Aboriginal populations and the Blackfoot Indians of Montana, US.';
-                        firstColor.innerHTML = '>5.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>2.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>0.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '5.9 - 8% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '2.5 - 5.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '0.9 - 2.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 0.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 7) {
                         resultText.innerHTML = 'Blood type B has its highest frequency in the Middle East, where it ranks as the largest share of the population. In Southeast Asia its share of the population is lowest, especially in Indonesia, secondarily in East Asia, Northern Asia and neighboring Central Asia,';
-                        firstColor.innerHTML = '>1.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>0.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '1.5 - 4% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '1 - 1.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '0.5 - 1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 0.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 8) {
                         resultText.innerHTML = 'Blood type AB is the most recent and didn’t occur until the 16th Century when group A populations from Europe and group B populations from Asia began to mix.'
-                        firstColor.innerHTML = '>0.8% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>0.3% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>0.1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '0.8 - 1.2% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '0.3 - 0.8% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '0.1 - 0.3% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 0.1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                     }
 
                 } else {
                     if (percentageValue == 1) {
-                        firstColor.innerHTML = '>50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>40% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>30% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>20% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        resultText.innerHTML = ' Blood type O is associated with high frequencies in Central and South America, and secondly highest in Southern Africa. ';
+                        firstColor.innerHTML = '50 -75% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '40 -50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '30 - 40% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '20 - 30% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 2) {
                         resultText.innerHTML = 'Blood group A is associated with high frequencies in Europe, especially in Scandinavia and Central Europe, although its highest frequencies occur in some Australian Aboriginal populations and the Blackfoot Indians of Montana, US.';
-                        firstColor.innerHTML = '>35% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>27% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>20% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>10% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '35 - 47% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '27 - 35% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '20 - 27% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '10 - 20% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 3) {
                         resultText.innerHTML = 'Blood type B has its highest frequency in the Middle East, where it ranks as the largest share of the population. In Southeast Asia its share of the population is lowest, especially in Indonesia, secondarily in East Asia, Northern Asia and neighboring Central Asia,';
-                        firstColor.innerHTML = '>16.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>10% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '16.5 - 37% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '10 - 16.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '5 - 10% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '1 - 5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 4) {
                         resultText.innerHTML = 'Blood type AB is the most recent and didn’t occur until the 16th Century when group A populations from Europe and group B populations from Asia began to mix.'
-                        firstColor.innerHTML = '>6.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>5.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>3.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.4% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '6.9 - 15% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '5.5 - 6.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '3.9 - 5.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.4 - 3.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 5) {
                         resultText.innerHTML = ' Blood type O is associated with high frequencies in Central and South America, and secondly highest in Southern Africa. ';
-                        firstColor.innerHTML = '>6.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>4.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '6.5 - 13% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '4.5 - 6.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '1 - 4.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 6) {
                         resultText.innerHTML = 'Blood group A is associated with high frequencies in Europe, especially in Scandinavia and Central Europe, although its highest frequencies occur in some Australian Aboriginal populations and the Blackfoot Indians of Montana, US.';
-                        firstColor.innerHTML = '>5.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>2.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>0.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '5.9 - 8% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '2.5 - 5.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '0.9 - 2.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 0.9% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 7) {
                         resultText.innerHTML = 'Blood type B has its highest frequency in the Middle East, where it ranks as the largest share of the population. In Southeast Asia its share of the population is lowest, especially in Indonesia, secondarily in East Asia, Northern Asia and neighboring Central Asia,';
-                        firstColor.innerHTML = '>1.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>0.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '1.5 - 4% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '1 - 1.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '0.5 - 1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 0.5% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
                     else if (percentageValue == 8) {
                         resultText.innerHTML = 'Blood type AB is the most recent and didn’t occur until the 16th Century when group A populations from Europe and group B populations from Asia began to mix.'
-                        firstColor.innerHTML = '>0.8% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                        secondColor.innerHTML = '>0.3% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                        thirdColor.innerHTML = '>0.1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                        fourthColor.innerHTML = '>0.01% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                        firstColor.innerHTML = '0.8 - 1.2% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                        secondColor.innerHTML = '0.3 - 0.8% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                        thirdColor.innerHTML = '0.1 - 0.3% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                        fourthColor.innerHTML = '0.01 - 0.1% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fee391" id="color4_color"></circle></svg></span>';
                     }
 
                 }
