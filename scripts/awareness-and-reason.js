@@ -106,7 +106,11 @@ function loadDataset(dataset, index) {
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "middle")
             .text(function (d) {
-                return d.data.value + "%";
+                if (dataset.name === "Knowledge and Attitude Regarding Blood Donation") {
+                    return d.data.value + "%   yes";
+                } else {
+                    return d.data.value + "%";
+                }
             })
             .each(function (d) {
                 var box = this.parentNode.getBBox();
