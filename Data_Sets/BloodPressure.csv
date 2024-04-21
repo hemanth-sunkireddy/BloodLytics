@@ -1,0 +1,111 @@
+States/UTs,Area,WomenMildlyElevatedBloodPressure(Systolic 140-159 mm of Hg and/or Diastolic 90-99 mm of Hg),Women age 15 years and above wih Moderately or severely elevated blood pressure (Systolic ≥160 mm of Hg and/or Diastolic ≥100 mm of Hg) (%),Women age 15 years and above wih Elevated blood pressure (Systolic ≥140 mm of Hg and/or Diastolic ≥90 mm of Hg) or taking medicine to control blood pressure (%),Men age 15 years and above wih Mildly elevated blood pressure (Systolic 140-159 mm of Hg and/or Diastolic 90-99 mm of Hg) (%),Men age 15 years and above wih Moderately or severely elevated blood pressure (Systolic ≥160 mm of Hg and/or Diastolic ≥100 mm of Hg) (%),Men age 15 years and above wih Elevated blood pressure (Systolic ≥140 mm of Hg and/or Diastolic ≥90 mm of Hg) or taking medicine to control blood pressure (%)
+India,Urban,13.6,5.2,23.6,17.1,5.9,26.6
+India,Rural,11.9,5.2,20.2,15,5.5,22.7
+India,Total,12.4,5.2,21.3,15.7,5.7,24
+Andaman & Nicobar Islands,Urban,12.6,5,23.4,17.6,6.5,28.2
+Andaman & Nicobar Islands,Rural,16.9,4.8,26.4,22.1,6.4,31.2
+Andaman & Nicobar Islands,Total,15.3,4.9,25.3,20.6,6.5,30.2
+Andhra Pradesh,Urban,14.4,6.2,27.5,19.2,7.4,32.2
+Andhra Pradesh,Rural,13.2,5.8,24.3,16.9,6.9,27.6
+Andhra Pradesh,Total,13.6,5.9,25.3,17.6,7.1,29
+Arunachal Pradesh,Urban,16.1,6.8,25.3,23.1,8.5,33.2
+Arunachal Pradesh,Rural,16.5,6.7,24.8,22.8,9.1,33.1
+Arunachal Pradesh,Total,16.4,6.7,24.9,22.8,9,33.1
+Assam,Urban,12,5.1,22.5,13.8,5.3,23.8
+Assam,Rural,10.8,4.7,18.5,12.7,4.2,19.6
+Assam,Total,11,4.8,19.1,12.9,4.4,20.3
+Bihar,Urban,9,3.2,16.6,11.7,4.2,19.5
+Bihar,Rural,8.6,3.7,15.8,11,4.3,18.1
+Bihar,Total,8.7,3.6,15.9,11.2,4.3,18.4
+Chandigarh,Urban,14.4,5.5,25,18.6,8.6,30.6
+Chandigarh,Rural,-20,-6.7,-30,-19.2,-15.4,-34.6
+Chandigarh,Total,14.5,5.6,25,18.7,8.7,30.6
+Chhattisgarh,Urban,14.6,5.7,23.5,19.5,6.3,27.8
+Chhattisgarh,Rural,14.9,7.1,23.6,18.9,7.8,27.7
+Chhattisgarh,Total,14.8,6.8,23.6,19,7.5,27.7
+Dadra and Nagar Haveli & Daman and Diu,Urban,8.9,3.3,16.5,11.9,3.1,17
+Dadra and Nagar Haveli & Daman and Diu,Rural,6.7,4.5,13.6,7.8,4.3,13.9
+Dadra and Nagar Haveli & Daman and Diu,Total,7.7,4,14.9,9.8,3.7,15.4
+Goa,Urban,12.6,3.5,27.6,14.4,4.7,25.9
+Goa,Rural,11.5,3.8,27.4,15.5,4.7,28.2
+Goa,Total,12.1,3.6,27.5,14.8,4.7,26.8
+Gujarat,Urban,11.4,3.8,21.1,12.7,3.9,20.3
+Gujarat,Rural,12,5.1,20.1,13.3,4.8,20.3
+Gujarat,Total,11.7,4.6,20.6,13.1,4.4,20.3
+Haryana,Urban,13.6,5.7,22.9,17.2,7,26.2
+Haryana,Rural,11.7,5.3,20.1,16.2,6.9,24.6
+Haryana,Total,12.3,5.4,21,16.6,6.9,25.1
+Himachal Pradesh,Urban,9.5,4.9,22.1,18,6,29.1
+Himachal Pradesh,Rural,12.2,5.1,22.2,16.2,4.7,23.6
+Himachal Pradesh,Total,11.9,5.1,22.2,16.5,4.9,24.4
+Jammu & Kashmir,Urban,11.4,3,21.2,12.5,2.8,20.1
+Jammu & Kashmir,Rural,11.8,3.1,19.6,12.2,2.7,18.5
+Jammu & Kashmir,Total,11.7,3,20,12.3,2.8,18.9
+Jharkhand,Urban,13,4.7,20.1,16.3,6.5,25.3
+Jharkhand,Rural,10.5,5.1,17,14.6,6,21.6
+Jharkhand,Total,11.1,5,17.8,15.1,6.1,22.6
+Karnataka,Urban,16.3,6.1,27.4,18.5,6.8,29.2
+Karnataka,Rural,13.8,6.2,23.4,16.5,6.6,25.5
+Karnataka,Total,14.8,6.2,25,17.2,6.7,26.9
+Kerala,Urban,15.4,6.2,30.7,19.1,6,32.6
+Kerala,Rural,15.5,7,31,19.3,7.3,32.9
+Kerala,Total,15.5,6.6,30.9,19.2,6.7,32.8
+Ladakh,Urban,8.2,1.6,13.5,8.5,1.5,14.5
+Ladakh,Rural,10.9,1.7,16.3,11.9,2.5,18.1
+Ladakh,Total,10.4,1.7,15.7,11.2,2.3,17.4
+Lakshadweep,Urban,14.4,7.2,26.5,17.5,5.4,25.9
+Lakshadweep,Rural,11.8,3.5,18.4,13.4,4.1,20.7
+Lakshadweep,Total,13.9,6.5,24.8,16.6,5.1,24.7
+Madhya Pradesh,Urban,13.9,5.2,22.5,17.9,5.9,25.9
+Madhya Pradesh,Rural,12.9,5.2,19.9,15.3,5.1,21.5
+Madhya Pradesh,Total,13.2,5.2,20.6,16,5.3,22.7
+Maharastra,Urban,14.1,4.4,23.8,16.8,5,25.7
+Maharastra,Rural,13.4,5.5,22.6,15.4,5.5,23.5
+Maharastra,Total,13.7,5,23.1,16,5.3,24.4
+Manipur,Urban,15.9,5.4,26,22.7,10.3,37.5
+Manipur,Rural,12.1,6.1,21.1,19.6,8.6,30.4
+Manipur,Total,13.6,5.9,23,20.8,9.3,33.2
+Meghalaya,Urban,13.6,4.9,24.6,17.8,5.8,28.5
+Meghalaya,Rural,9,3.6,17.1,13.3,3.4,19.9
+Meghalaya,Total,10,3.9,18.7,14.2,3.8,21.4
+Mizoram,Urban,12.3,3.3,21,17,6.4,28.7
+Mizoram,Rural,8.7,3,13.5,15.2,4.2,21.1
+Mizoram,Total,10.7,3.2,17.7,16.2,5.4,25.2
+Nagaland,Urban,12,6.8,19.9,16.7,8,26
+Nagaland,Rural,14.7,7.9,23.6,20.3,9.3,30.1
+Nagaland,Total,13.8,7.6,22.4,19.1,8.9,28.7
+NCT of Delhi,Urban,14.7,6,24.2,21.9,8.7,32.8
+NCT of Delhi,Rural,13.5,3.4,20.2,18.1,10.5,31
+NCT of Delhi,Total,14.7,5.9,24.1,21.8,8.7,32.8
+Odisha,Urban,13.3,5.4,24.5,18.3,6.9,29.3
+Odisha,Rural,12.9,5.7,21.9,16.5,6,24.9
+Odisha,Total,12.9,5.6,22.4,16.8,6.1,25.6
+Puducherry,Urban,12.4,4.4,24.3,20,6,31.1
+Puducherry,Rural,11.7,3,20.2,17.1,7.4,28
+Puducherry,Total,12.1,4,23,19.1,6.4,30.1
+Punjab,Urban,18.3,7.5,30.8,24.4,9.3,36.5
+Punjab,Rural,18.6,9.3,31.4,24.5,11.9,38.4
+Punjab,Total,18.5,8.6,31.2,24.5,11,37.7
+Rajasthan,Urban,10.3,3.3,16.9,13.2,3.9,19.2
+Rajasthan,Rural,9.7,3.2,14.9,12.6,3.6,17.4
+Rajasthan,Total,9.8,3.3,15.4,12.7,3.6,17.9
+Sikkim,Urban,16.7,10.7,32.3,24.5,11.1,38.6
+Sikkim,Rural,19.5,12.4,35.8,25.2,15.2,43.1
+Sikkim,Total,18.5,11.8,34.5,25,13.9,41.6
+Tamil Nadu,Urban,14.8,6.5,26.4,20.1,7.6,31.5
+Tamil Nadu,Rural,13.8,5.9,23.4,19,7.1,29
+Tamil Nadu,Total,14.3,6.2,24.8,19.5,7.4,30.2
+Telangana,Urban,14.3,6.3,29.1,20.5,9.1,36.8
+Telangana,Rural,13.2,6.3,24.7,17.5,7.6,28.9
+Telangana,Total,13.6,6.3,26.1,18.5,8.1,31.4
+Tripura,Urban,13.3,6.5,26.4,15.4,6.2,27.3
+Tripura,Rural,10.1,4.4,18.6,12.5,4.8,20.6
+Tripura,Total,11,5,20.9,13.4,5.2,22.7
+Uttar Pradesh,Urban,13.2,5.5,20.9,17.3,6,24.8
+Uttar Pradesh,Rural,11,4.7,17.6,14.5,5,20.7
+Uttar Pradesh,Total,11.5,4.9,18.4,15.2,5.2,21.7
+Uttarakhand,Urban,14.3,6.1,25.4,21.2,10.2,34.8
+Uttarakhand,Rural,13.4,6.3,22,19.6,9.2,30.5
+Uttarakhand,Total,13.7,6.3,22.9,20.1,9.5,31.8
+West Bengal,Urban,12.3,4.9,21.5,14.5,4.2,22.3
+West Bengal,Rural,11.1,5.5,19.9,12.3,4.2,19
