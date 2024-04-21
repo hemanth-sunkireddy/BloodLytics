@@ -189,11 +189,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     let color4 = "666666";
     let color5 = "000000";
     if (black_or_color == 2) {
-      color1 = "7FFF00";
-      color2 = "FFA500";
-      color3 = "9370DB";
-      color4 = "FF6347";
-      color5 = "000000";
+      color1 = "cc4c02";
+      color2 = "fe9929";
+      color3 = "fff7bc";
+      color4 = "cc4c02";
+      color5 = "FFFFFF";
     }
 
     let color1_for_pie = "FFFFFF";

@@ -42,9 +42,7 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="dd-menu active collapsed" href="index.html" data-bs-toggle="collapse"
-                                        data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent"
-                                        aria-expanded="false" aria-label="Toggle navigation">Home</a>
+                                    <a href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <ul class="sub-menu collapse" id="submenu-1-2">
@@ -75,7 +73,8 @@
 
     <div class="container" id="visualisations">
         <div class="section-title">
-            <h3 class="wow zoomIn" data-wow-delay=".2s">Indian States Voluntary Blood Donation Percentage for Year 2016</h3>
+            <h3 class="wow zoomIn" data-wow-delay=".2s">Indian States Voluntary Blood Donation Percentage for Year 2016
+            </h3>
         </div>
 
 
@@ -85,7 +84,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-4 col-12">
                             <!-- Content for the second column goes here -->
-                            <p style="font-weight: bold;">B&W &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Color
+                            <p style="font-weight: bold; color: black">B&W &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                &nbsp;&nbsp; Color
                             </p>
                             <input type="range" min="1" max="2" value="1" class="slider" id="bw_or_color" />
                         </div>
@@ -104,31 +104,34 @@
                                     <div class="col-md-4 col-6">
                                         <p style="font-weight: 1000; color: blue">Voluntary Blood Donation Percentage
                                         </p>
-                                        <p id="color1_text">>80% <span><svg width="14" height="14">
+                                        <p id="color1_text" style="color: black;">80 - 100% <span><svg width="14"
+                                                    height="14">
                                                     <circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color">
                                                     </circle>
                                                 </svg></span></p>
-                                        <p id="color2_text">>70%<span><svg width="14" height="14">
+                                        <p id="color2_text" style="color: black;">70 - 80%<span><svg width="14"
+                                                    height="14">
                                                     <circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color">
                                                     </circle>
                                                 </svg></span></p>
-                                        <p id="color3_text">>60% <span><svg width="14" height="14">
+                                        <p id="color3_text" style="color: black;">60 - 70% <span><svg width="14"
+                                                    height="14">
                                                     <circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color">
                                                     </circle>
                                                 </svg></span></p>
-                                        <p id="color4_text">>50%<span><svg width="14" height="14">
+                                        <p id="color4_text" style="color: black;">50 - 60%<span><svg width="14"
+                                                    height="14">
                                                     <circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color">
                                                     </circle>
                                                 </svg></span></p>
-
-
-                                        <p>Less than 50% <span><svg width="14" height="14">
+                                        <p style="color: black;" id="color5_text">0 - 50% <span><svg width="14" height="14">
                                                     <circle cx="7" cy="7" r="7" fill="black"></circle>
                                                 </svg></span></p>
                                     </div>
 
                                     <div class="col-6 flex">
-                                        <p id="dynamic">Uttar Pradesh, Meghalaya,Manipur, Assam, Chhattisgarh have
+                                        <p id="dynamic" style="color: black;">Uttar Pradesh, Meghalaya,Manipur, Assam,
+                                            Chhattisgarh have
                                             Voluntary Blood
                                             Donations Less than 50% compared to Replacement and Family Blood Donations.
                                         </p>
@@ -142,9 +145,16 @@
             </div>
         </div>
 
+        <div style="text-align: center; margin-top: 2%">
+            <p style="font-weight: bolder; font-size: large;">Voluntary Blood Distribution in India (Year 2016): <a
+                    href="https://naco.gov.in/sites/default/files/Assessment%20of%20Blood%20Banks%20in%20India%20-%202016.pdf"
+                    style="color: #3366FF; text-decoration: none; font-weight: bold;"> Source Data Link</a></p>
+        </div>
+        <hr>
         <div class="container" id="visualisations" style="padding-top: 5%; ">
             <div class="section-title">
-                <h3 class="wow zoomIn" data-wow-delay=".2s">Distribution of Different types of Blood Donations For year 2021</h3>
+                <h3 class="wow zoomIn" data-wow-delay=".2s">Distribution of Different types of Blood Donations For year
+                    2021</h3>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12 wow fadeInUp" data-wow-delay=".4s">
@@ -231,7 +241,7 @@
                                     </div>
 
                                     <div class="col-6 flex">
-                                        <p id="dynamic">  </p>
+                                        <p id="dynamic"> </p>
                                     </div>
                                 </div>
                             </div>
@@ -242,6 +252,11 @@
             </div>
         </div>
     </div>
+
+
+
+
+
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -343,15 +358,15 @@
 
 
                 if (blackOrWhite == 1) {
-                    firstColor.innerHTML = '>80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
-                    secondColor.innerHTML = '>70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
-                    thirdColor.innerHTML = '>60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
-                    fourthColor.innerHTML = '>50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
+                    firstColor.innerHTML = '80 - 100% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color1_color"></circle></svg></span>';
+                    secondColor.innerHTML = '70 - 80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#F0EFEF" id="color2_color"></circle></svg></span>';
+                    thirdColor.innerHTML = '60 - 70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
+                    fourthColor.innerHTML = '50 - 60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                 } else {
-                    firstColor.innerHTML = '>80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#7FFF00" id="color1_color"></circle></svg></span>';
-                    secondColor.innerHTML = '>70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFA500" id="color2_color"></circle></svg></span>';
-                    thirdColor.innerHTML = '>60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#9370DB" id="color3_color"></circle></svg></span>';
-                    fourthColor.innerHTML = '>50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FF6347" id="color4_color"></circle></svg></span>';
+                    firstColor.innerHTML = '80 - 100% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                    secondColor.innerHTML = '70 - 80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
+                    thirdColor.innerHTML = '60 - 70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
+                    fourthColor.innerHTML = '50 - 60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color4_color"></circle></svg></span>';
 
                 }
             }
