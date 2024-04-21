@@ -219,23 +219,23 @@
                         <div class="col-lg-6 col-md-4 col-12">
                             <div>
                                 <div class="row">
-                                    <div class="col-md-4 col-6">
-                                        <p style="font-weight: 1000; color: blue">Notation
+                                    <div class="">
+                                        <p style="font-weight: 1000; color: blue; font-size: 25px;">Blood Donation Type
                                         </p>
-                                        <p id="color1_text">Voluntary &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <span><svg width="20" height="20">
-                                                    <circle cx="7" cy="7" r="20" fill="#21B0FE" id="color1_color">
+                                        <p id="color1_text" style="color: black; font-size: 20px; margin: 10px">Voluntary &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span><svg width="30" height="30">
+                                                    <circle cx=15" cy="15" r="30" fill="#21B0FE" id="color1_color">
                                                     </circle>
                                                 </svg></span>
                                         </p>
-                                        <p id="color2_text">
+                                        <p id="color2_text" style="color: black; font-size: 20px; margin: 10px">
                                             &nbsp;&nbsp;&nbsp;Family&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><svg
-                                                    width="20" height="20">
-                                                    <circle cx="7" cy="7" r="20" fill="#FED700" id="color2_color">
+                                                    width="30" height="30">
+                                                    <circle cx="15" cy="15" r="30" fill="#FED700" id="color2_color">
                                                     </circle>
                                                 </svg></span></p>
-                                        <p id="color3_text">Replacement <span><svg width="20" height="20">
-                                                    <circle cx="7" cy="7" r="20" fill="#FE218B" id="color3_color">
+                                        <p id="color3_text" style="color: black; font-size: 20px; margin: 10px">Replacement <span><svg width="30" height="30">
+                                                    <circle cx="15" cy="15" r="30" fill="#FE218B" id="color3_color">
                                                     </circle>
                                                 </svg></span></p>
                                     </div>
@@ -253,10 +253,12 @@
         </div>
     </div>
 
-
-
-
-
+    <div style="text-align: center; margin-top: 2%">
+        <p style="font-weight: bolder; font-size: large;"> State Wise Blood Unit Collection (Jan-Jun, 2021): <a
+                href="https://sansad.in/getFile/loksabhaquestions/annex/176/AU1896.pdf?source=pqals#:~:text=During%20January%20to%20June%202021,mobile%20and%20blood%20transportation%20vans."
+                style="color: #3366FF; text-decoration: none; font-weight: bold;"> Source Data Link</a></p>
+    </div>
+    <hr>
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -355,6 +357,8 @@
                 var secondColor = document.getElementById('color2_text');
                 var thirdColor = document.getElementById('color3_text');
                 var fourthColor = document.getElementById('color4_text');
+                var fifthColor = document.getElementById('color5_text');
+
 
 
                 if (blackOrWhite == 1) {
@@ -363,10 +367,11 @@
                     thirdColor.innerHTML = '60 - 70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#D3D3D3" id="color3_color"></circle></svg></span>';
                     fourthColor.innerHTML = '50 - 60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#A9A9A9" id="color4_color"></circle></svg></span>';
                 } else {
-                    firstColor.innerHTML = '80 - 100% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#662506" id="color1_color"></circle></svg></span>';
+                    firstColor.innerHTML = '80 - 100% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#993300" id="color1_color"></circle></svg></span>';
                     secondColor.innerHTML = '70 - 80% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#cc4c02" id="color2_color"></circle></svg></span>';
                     thirdColor.innerHTML = '60 - 70% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fe9929" id="color3_color"></circle></svg></span>';
-                    fourthColor.innerHTML = '50 - 60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color4_color"></circle></svg></span>';
+                    fourthColor.innerHTML = '50 - 60% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#fff7bc" id="color4_color"></circle></svg></span>';
+                    fifthColor.innerHTML = '0 - 50% <span><svg width="14" height="14"><circle cx="7" cy="7" r="7" fill="#FFFFFF" id="color5_color"></circle></svg></span>';
 
                 }
             }

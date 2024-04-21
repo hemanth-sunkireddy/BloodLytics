@@ -166,7 +166,9 @@ document.addEventListener('DOMContentLoaded', async function () {
       return "translate(" + centroid[0] + "," + centroid[1] + ")";
     })
     .attr("text-anchor", "middle") // Center the text
+    .style("font-size", "20px")
     .text(percentages[0][0]); // Display the state name
+
 
   // Load Indian states data
   const india_states = await d3.json("Maps_JSON/india-states.json");
@@ -189,10 +191,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     let color4 = "666666";
     let color5 = "000000";
     if (black_or_color == 2) {
-      color1 = "cc4c02";
-      color2 = "fe9929";
-      color3 = "fff7bc";
-      color4 = "cc4c02";
+      color1 = "993300";
+      color2 = "cc4c02";
+      color3 = "fe9929";
+      color4 = "fff7bc";
       color5 = "FFFFFF";
     }
 
@@ -269,7 +271,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         tooltip.style('visibility', "hidden");
 
         svg.selectAll("path")
-        .style("stroke-width", 1)
+          .style("stroke-width", 1)
       });
 
 
@@ -372,8 +374,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Move the text to the centroid
         return "translate(" + centroid[0] + "," + centroid[1] + ")";
       })
+      .style("font-size", "20px")
       .attr("text-anchor", "middle") // Center the text
       .text(percentages[selected_state - 1][0]); // Display the state name
+
+
 
 
     console.log(data_for_pi);
