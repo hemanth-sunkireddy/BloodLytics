@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Treemap Visualization</title>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        text {
+            font-family: Arial, sans-serif;
+        }
+
+        .back-button {
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            fill: white;
+            background-color: #1c1c1e;
+            padding: 8px 12px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: rgb(84, 101, 119);
+        }
+
+        .box-group rect {
+            stroke-width: 2px;
+            stroke: #333;
+            fill-opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .box-group rect:hover {
+            fill-opacity: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .box-group text {
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
+
+    <script>
+        var datasets = [
+            { name: "Reasons for Not Donating Blood", file: "Data_Sets/reasons_for_not_donating_blood.csv", color: '#FFC300' },
+            { name: "Misconceptions", file: "Data_Sets/misconceptions.csv", color: '#FF5733' },
+            { name: "Motivation", file: "Data_Sets/motivation.csv", color: '#C70039' },
+            { name: "Knowledge and Attitude Regarding Blood Donation", file: "Data_Sets/knowledge-and-attitude-regarding-blood-donation.csv", color: '#900C3F' }
+        ];
+
+        var margin = { top: 10, right: 10, bottom: 40, left: 10 },
+            width = 1800 - margin.left - margin.right,
+            height = 900 - margin.top - margin.bottom;
+
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
+        // Initial treemap with four boxes
+        var initialData = d3.hierarchy({ children: datasets })
+            .sum(function (d) { return 1; });
+
+        var treemap = d3.treemap()
+            .size([width, height])
+            .padding(4);
+
+        treemap(initialData);
+
+        function loadDataset(dataset) {
+            d3.csv(dataset.file, function (data) {
+                var root = d3.stratify()
+                    .id(function (d) { return d.name; })
+                    .parentId(function (d) { return d.parent; })
+                    (data);
+                root.sum(function (d) { return +d.value })
+
+                d3.treemap()
+                    .size([width, height])
+                    .padding(4)
+                    (root)
+
+                svg.selectAll(".box-group").remove(); // Remove existing boxes
+
+                var boxes = svg
+                    .selectAll("g.box-group")
+                    .data(root.leaves())
+                    .enter()
+                    .append("g")
+                    .attr("class", "box-group")
+                    .attr("transform", function (d) { return "translate(" + d.x0 + "," + d.y0 + ")"; })
+                    .on("mouseover", function (d) {
+                        d3.select(this).select("rect").style("fill", "lightgreen");
+                        d3.select(this).select(".value-text").style("display", "block");
+                        d3.select(this).select(".name-text").style("display", "none");
+                    })
+                    .on("mouseout", function (d) {
+                        d3.select(this).select("rect").style("fill", dataset.color);
+                        d3.select(this).select(".value-text").style("display", "none");
+                        d3.select(this).select(".name-text").style("display", "block");
+                    });
+
+                boxes.append("rect")
+                    .attr('width', function (d) { return d.x1 - d.x0; })
+                    .attr('height', function (d) { return d.y1 - d.y0; })
+                    .style("stroke", "#333")
+                    .style("fill", dataset.color)
+                    .style("rx", 5) // rounded corners
+                    .style("ry", 5); // rounded corners
+
+                boxes.append("foreignObject")
+                    .attr("class", "name-text")
+                    .attr("x", 5)
+                    .attr("y", 20)
+                    .attr("width", function (d) { return d.x1 - d.x0 - 10; })
+                    .attr("height", function (d) { return d.y1 - d.y0 - 10; })
+                    .append("xhtml:div")
+                    .style("width", function (d) { return (d.x1 - d.x0 - 10) + "px"; })
+                    .style("height", function (d) { return (d.y1 - d.y0 - 10) + "px"; })
+                    .style("overflow", "auto")
+                    .style("display", "flex")
+                    .style("justify-content", "center")
+                    .style("align-items", "center")
+                    .style("font-size", "18px")
+                    .html(function (d) { return d.data.name; });
+
+                boxes.append("text")
+                    .attr("class", "value-text")
+                    .attr("font-size", "20px")
+                    .attr("fill", "black")
+                    .style("display", "none")
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "middle")
+                    .text(function (d) { return d.data.value + "%"; })
+                    .each(function (d) {
+                        var box = this.parentNode.getBBox();
+                        var x = box.x + box.width / 2;
+                        var y = box.y + box.height / 2;
+                        d3.select(this).attr("x", x).attr("y", y);
+                    });
+
+                // Back button
+                var backbutton = svg.append("g")
+                    .attr("class", "back-button")
+                    .attr("transform", "translate(10, 850)")
+                    .on("click", function () {
+                        svg.selectAll(".box-group").remove();
+                        loadInitial();
+                    });
+
+                backbutton.append("rect")
+                    .attr("width", 80)
+                    .attr("height", 25)
+                    .style("fill", "#007bff")
+                    .style("rx", 5) // rounded corners
+                    .style("ry", 5); // rounded corners
+
+                backbutton.append("text")
+                    .attr("x", 40)
+                    .attr("y", 18)
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "middle")
+                    .style("fill", "white")
+                    .text("BACK");
+            });
+        }
+
+        function loadInitial() {
+            // Remove the back button if it exists
+            if (svg.select(".back-button").size() > 0) {
+                svg.select(".back-button").remove();
+            }
+
+            treemap(initialData);
+            var boxes = svg.selectAll(".box-group")
+                .data(initialData.leaves())
+                .enter()
+                .append("g")
+                .attr("class", "box-group")
+                .attr("transform", function (d) { return "translate(" + d.x0 + "," + d.y0 + ")"; })
+                .on("click", function (d) {
+                    var dataset = d.data;
+                    loadDataset(dataset);
+                });
+
+            boxes.append("rect")
+                .attr('width', function (d) { return d.x1 - d.x0; })
+                .attr('height', function (d) { return d.y1 - d.y0; })
+                .style("stroke", "#333")
+                .style("fill", function (d, i) { return datasets[i].color; })
+                .style("rx", 5) // rounded corners
+                .style("ry", 5); // rounded corners
+
+            boxes.append("text")
+                .attr("x", function (d) { return (d.x1 - d.x0) / 2; })
+                .attr("y", function (d) { return (d.y1 - d.y0) / 2; })
+                .attr("font-size", "18px")
+                .attr("text-anchor", "middle")
+                .attr("alignment-baseline", "middle")
+                .text(function (d) { return d.data.name; });
+        }
+
+        loadInitial();
+    </script>
+</body>
+
+</html>

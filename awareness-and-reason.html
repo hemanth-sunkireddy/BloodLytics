@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Treemap Visualization</title>
+    <!-- Load d3.js -->
+    <link rel="stylesheet" href="styles/awareness-and-reason.css">
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/LineIcons.3.0.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="assets/css/glightbox.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="styles/india-map.css">
+</head>
+
+<body>
+     <!-- Preloader -->
+     <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- /End Preloader -->
+
+
+    <!-- Start Header Area -->
+    <header class="header navbar-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="nav-inner">
+                        <!-- Start Navbar -->
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html">
+                                <img src="assets/images/BloodLytics.png" alt="Logo" style="width: 120%; height: 120%;">
+                            </a>
+                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                        <a class="dd-menu active collapsed" href="index.html" data-bs-toggle="collapse"
+                                            data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="Toggle navigation">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <ul class="sub-menu collapse" id="submenu-1-2">
+                                            <li class="nav-item"><a href="#about">About</a></li>
+                                            <li class="nav-item"><a href="#visualisations">Visualisations</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#about" aria-label="Toggle navigation">About</a>
+                                    </li>
+                                </ul>
+                            </div> <!-- navbar collapse -->
+                            <div class="button">
+                                <a href="#visualisations" class="signup">Visualisations</a>
+                            </div>
+                        </nav>
+                        <!-- End Navbar -->
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </header>
+    <!-- End Header Area -->
+    <!-- Create a div where the graph will take place -->
+
+    <section class="hero-area">
+      
+    </section>
+
+    <div id="my_dataviz"></div>
+
+     <!-- Start Footer Area -->
+     <footer class="footer section">
+        <!-- Start Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="inner-content">
+                    <div class="row">
+
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <!-- Single Widget -->
+                            <div class="single-footer f-link">
+                                <h3>Team</h3>
+                                <ul>
+                                    <li><a href="https://github.com/hemanth-sunkireddy">Hemanth Sunkireddy</a></li>
+                                    <li><a href="javascript:void(0)">Bharath Gajawada</a></li>
+                                    <li><a href="javascript:void(0)">Jagankrishna Nallasingu</a></li>
+                                </ul>
+                            </div>
+                            <!-- End Single Widget -->
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <!-- Single Widget -->
+                            <div class="single-footer newsletter">
+                                <h3>Data Visualisation Project</h3>
+                                <div>
+                                    <p>Phase 1 Report</p>
+                                    <a class="sub-btn"
+                                        href="https://github.com/hemanth-sunkireddy/BloodLytics/blob/main/Report_phase1.pdf"><i
+                                            class="lni lni-paperclip w-100 h-100"></i>
+                                    </a>
+                                    <p>Phase 2 Report</p>
+                                    <a class="sub-btn"
+                                        href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
+                                            class="lni lni-paperclip w-100 h-100"></i>
+                                    </a>
+                                    <a class="sub-btn" href="https://youtu.be/uOzVvlwPF0Y"><i
+                                            class="lni lni-youtube"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Widget -->
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <!-- Single Widget -->
+                            <div class="single-footer newsletter">
+                                <div class="row">
+                                    <a href="https://github.com/hemanth-sunkireddy/BloodLytics">
+                                        <img src="assets/images/github.png" width="10%">
+                                    </a>
+                                    <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
+                                        <img src="assets/images/youtube.png" width="10%">
+                                    </a>
+                                    <a href="https://hemanth-sunkireddy.github.io/BloodLytics/">
+                                        <img src="assets/images/brand.png" width="13%" class="m-lg-0">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Footer Top -->
+    </footer>
+    <!--/ End Footer Area -->
+
+
+
+
+    
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="scripts/awareness-and-reason.js"></script>
+</body>
+  <!-- ========================= JS here ========================= -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/tiny-slider.js"></script>
+  <script src="assets/js/glightbox.min.js"></script>
+  <script src="assets/js/count-up.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://d3js.org/d3.v7min.js"></script>
+</html>
