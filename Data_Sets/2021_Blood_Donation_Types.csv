@@ -1,6 +1,6 @@
 state,FamilyMaleDonors,FamilyFemaleDonors,ReplacementMaleDonors,ReplacementFemaleDonors,VoluntaryMaleDonors,VoluntaryFemaleDonors
 Andhra Pradesh,13313,39,37254,136,231997,2838
-Arunachal Pradesh,0,0,523,31,1148,188
+Arunachal Pradesh,0,0,523,31    ,1148,188
 Assam,12968,336,34684,580,34281,769
 Bihar,15118,679,48.253,1586,24629,1132
 Chhattisgarh,7595,87,42885,542,28848,845
