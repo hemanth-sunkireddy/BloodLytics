@@ -52,11 +52,25 @@ Promise.all([
         div.transition()
           .duration(200)
           .style("opacity", .9);
-        div.html(d.state + "<br/>" + "Donations: " + d.donations + "<br/>" + "Requirements: " + d.requirements)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
+        const tooltipX = event.offsetX + 300;
+        const tooltipY = event.offsetY + 400;
+
+        d3.select(this)
+          .attr("stroke-width", 6.5)
+          .attr("stroke", "orange");
+
+        tooltip.html(`${d.state}<br> Donations: ${d.donations} <br> Requirements: ${d.requirements}`)
+          .style("left", tooltipX + "px")
+          .style("top", tooltipY + "px")
+          .style("opacity", 1)
+          .style('visibility', "visible");
       })
       .on("mouseout", function () {
+
+        d3.selectAll("line")
+        .attr("stroke-width", 2)
+        .attr("stroke", "blue");
+
         div.transition()
           .duration(500)
           .style("opacity", 0);
@@ -106,6 +120,24 @@ Promise.all([
     .attr("stroke-width", 1)
     .attr("stroke-dasharray", "5,5");
 });
+
+
+// Adding Tool Tip to the Graphs
+const tooltip = d3.select("#my_dataviz").append("div")
+  .attr("class", "tooltip")
+  .style("opacity", 1)
+  .style("position", "absolute")
+  .style("width", "150px") // Adjust width as needed
+  .style("height", "auto") // Adjust height as needed
+  .style("background-color", "#ffb6c1") // Change background color
+  .style("border", "1px solid #000000") // Add border
+  .style("padding", "10px") // Add padding for better appearance
+  .style("border-radius", "5px") // Add border radius for rounded corners
+  .style("color", "#000000") // Change text color
+  .style("font-weight", "bold") // Make text bold
+  .style("font-size", "12px") // Change font size
+  .style("pointer-events", "none") // Avoid tooltip blocking mouse events
+  .style("visibility", "hidden");
 
 function updateGraph() {
   let selectedState = this.value;
