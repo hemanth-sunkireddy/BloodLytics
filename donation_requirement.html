@@ -50,9 +50,7 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="dd-menu active collapsed" href="index.html" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Home</a>
+                                        <a href="index.html">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <ul class="sub-menu collapse" id="submenu-1-2">
@@ -83,7 +81,13 @@
 
     </section>
 
-    <div id="my_dataviz"></div>
+    <div id="my_dataviz">
+        <div id="dropdown-container">
+            <select id="state-dropdown"></select>
+        </div>
+        <svg></svg>
+    </div>
+
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -157,7 +161,7 @@
 
 
 
-    
+
 </body>
 <!-- ========================= JS here ========================= -->
 <script src="assets/js/bootstrap.min.js"></script>
