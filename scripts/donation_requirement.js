@@ -1,4 +1,4 @@
-let margin = { top: 50, right: 100, bottom: 100, left: 200 };
+let margin = { top: 50, right: 150, bottom: 100, left: 200 };
 let width = 1250 - margin.left - margin.right;
 let height = 800 - margin.top - margin.bottom;
 
@@ -52,24 +52,30 @@ Promise.all([
         div.transition()
           .duration(200)
           .style("opacity", .9);
-        const tooltipX = event.offsetX + 300;
-        const tooltipY = event.offsetY + 400;
+        const tooltipX = event.offsetX + 50;
+        const tooltipY = event.offsetY + 350;
 
         d3.select(this)
           .attr("stroke-width", 6.5)
           .attr("stroke", "orange");
 
-        tooltip.html(`${d.state}<br> Donations: ${d.donations} <br> Requirements: ${d.requirements}`)
+          tooltip.html(`${d.state}<br> Donations: ${d.donations} <br> Requirements: ${d.requirements}`)
           .style("left", tooltipX + "px")
           .style("top", tooltipY + "px")
           .style("opacity", 1)
-          .style('visibility', "visible");
+          .style("visibility", "visible")
+          .style("width", "200px") // Adjust width as needed
+          .style("background-color", "#ffffff") // Background color
+          .style("border", "1px solid #000000") // Border
+          .style("padding", "8px") // Padding
+          .style("font-family", "Arial, sans-serif") // Font family
+          .style("font-size", "14px");
       })
       .on("mouseout", function () {
 
         d3.selectAll("line")
         .attr("stroke-width", 2)
-        .attr("stroke", "blue");
+        .attr("stroke", "steelblue");
 
         div.transition()
           .duration(500)
@@ -87,11 +93,12 @@ Promise.all([
 
   // Add left y-axis for donations
   svg.append("g")
+  .attr("class", "axisBlack")
     .call(d3.axisLeft(yScale)
       .tickValues(d3.ticks(0, 50000, 10).concat(d3.ticks(50000, 400000, 10)).concat(d3.ticks(400000, 2200000, 10)))) // Define tick values for each range
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", -80)
+    .attr("y", -100)
     .attr("x", -height / 2)
     .attr("dy", "0.71em")
     .attr("text-anchor", "middle")
@@ -101,11 +108,12 @@ Promise.all([
 
   svg.append("g")
     .attr("transform", "translate(" + width + " ,0)")
+    .attr("class", "axisBlack")
     .call(d3.axisRight(yScale)
       .tickValues(d3.ticks(0, 50000, 10).concat(d3.ticks(50000, 400000, 10)).concat(d3.ticks(400000, 2200000, 10)))) // Define tick values for each range
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 80)
+    .attr("y", 100)
     .attr("x", -height / 2)
     .attr("dy", "0.71em")
     .attr("text-anchor", "middle")

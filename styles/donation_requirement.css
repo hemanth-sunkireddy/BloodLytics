@@ -11,9 +11,9 @@
 
 #dropdown-container {
   position: absolute;
-  top: 200px;
+  top: 350px;
   /* Adjust as needed */
-  right: 100px;
+  left: 250px;
   /* Adjust as needed */
   /* z-index: 999; Ensure dropdown appears above SVG */
 }
@@ -30,4 +30,14 @@ svg {
   margin-top: 60px;
   /* Add top margin to SVG */
   display: block;
+}
+
+
+.axisBlack path{
+  stroke: black;
+}
+
+.axisBlack text{
+  fill: black;
+  font-size: small;
 }
