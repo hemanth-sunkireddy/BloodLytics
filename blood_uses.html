@@ -33,11 +33,11 @@
     }
 
     .bar {
-      fill: steelblue;
+      fill: #07c0f9e6;
     }
 
     .bar:hover {
-      fill: orange;
+      fill: rgba(255, 129, 3, 0.862);
     }
 
     .bar text {
@@ -76,14 +76,6 @@
       to {
         opacity: 1;
       }
-    }
-
-    .bar {
-      fill: steelblue;
-    }
-
-    .bar:hover {
-      fill: orange;
     }
 
     .axis-x path,
@@ -180,20 +172,24 @@
   <h1 id="heading" style="margin-top: 150px">Do you wanna know where the donated blood used?</h1>
 
   <div id="chart-container">
-    <h2 id="chart-heading">Blood used in various Domains (in Numbers)</h2>
-    <svg id="chart" width="650" height="450"></svg>
+    <svg id="chart" width="1000" height="550"></svg>
   </div>
 
   <div class="tooltip"></div>
-
-  <select id="domain-dropdown">
-    <option>Select Domain</option>
+  <hr>
+  <select id="domain-dropdown" style="margin: 1%; padding: 0.5%; background-color: #E6F7FF;">
+    <option>Choose Clinical Method</option>
     <option value="Medicine">Medicine</option>
     <option value="Surgery">Surgery</option>
     <option value="ObstetricsGynaecology">Obstetrics & Gynaecology</option>
     <option value="Pediatrics">Pediatrics</option>
   </select>
 
+  <div>
+    <p style="font-size: 24px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color:black">Major
+      Contributions of Individual Clinical Method</p>
+  </div>
+  <hr>
   <div id="additional-chart-container"></div>
   <div id="" histo-chart"></div>
 
@@ -204,73 +200,70 @@
   </div>
   <hr>
   <hr>
-   <!-- Start Footer Area -->
-   <footer class="footer section">
+  <!-- Start Footer Area -->
+  <footer class="footer section">
     <!-- Start Footer Top -->
     <div class="footer-top">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row">
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer f-link">
-                            <h3>Team</h3>
-                            <ul>
-                                <li><a href="https://github.com/hemanth-sunkireddy">Hemanth Sunkireddy</a></li>
-                                <li><a href="javascript:void(0)">Bharath Gajawada</a></li>
-                                <li><a href="javascript:void(0)">Jagankrishna Nallasingu</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer newsletter">
-                            <h3>Data Visualisation Project</h3>
-                            <div>
-                                <p>Phase 1 Report</p>
-                                <a class="sub-btn"
-                                    href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
-                                        class="lni lni-paperclip w-100 h-100"></i>
-                                </a>
-                                <p>Phase 2 Report</p>
-                                <a class="sub-btn"
-                                    href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
-                                        class="lni lni-paperclip w-100 h-100"></i>
-                                </a>
-                                <a class="sub-btn" href="https://youtu.be/nkydSQRsNBQ"><i
-                                        class="lni lni-youtube"></i></a>
-                            </div>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer newsletter">
-                            <div class="row">
-                                <a href="https://github.com/hemanth-sunkireddy/BloodLytics">
-                                    <img src="assets/images/github.png" width="10%">
-                                </a>
-                                <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
-                                    <img src="assets/images/youtube.png" width="10%">
-                                </a>
-                                <a href="https://hemanth-sunkireddy.github.io/BloodLytics/">
-                                    <img src="assets/images/brand.png" width="13%" class="m-lg-0">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
+      <div class="container">
+        <div class="inner-content">
+          <div class="row">
+            <div class="col-lg-2 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="single-footer f-link">
+                <h3>Team</h3>
+                <ul>
+                  <li><a href="https://github.com/hemanth-sunkireddy">Hemanth Sunkireddy</a></li>
+                  <li><a href="javascript:void(0)">Bharath Gajawada</a></li>
+                  <li><a href="javascript:void(0)">Jagankrishna Nallasingu</a></li>
+                </ul>
+              </div>
+              <!-- End Single Widget -->
             </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="single-footer newsletter">
+                <h3>Data Visualisation Project</h3>
+                <div>
+                  <p>Phase 1 Report</p>
+                  <a class="sub-btn" href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
+                      class="lni lni-paperclip w-100 h-100"></i>
+                  </a>
+                  <p>Phase 2 Report</p>
+                  <a class="sub-btn" href="https://github.com/hemanth-sunkireddy/Data-visualisation-Project"><i
+                      class="lni lni-paperclip w-100 h-100"></i>
+                  </a>
+                  <a class="sub-btn" href="https://youtu.be/nkydSQRsNBQ"><i class="lni lni-youtube"></i></a>
+                </div>
+              </div>
+              <!-- End Single Widget -->
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+              <!-- Single Widget -->
+              <div class="single-footer newsletter">
+                <div class="row">
+                  <a href="https://github.com/hemanth-sunkireddy/BloodLytics">
+                    <img src="assets/images/github.png" width="10%">
+                  </a>
+                  <a href="https://www.youtube.com/watch?v=uOzVvlwPF0Y">
+                    <img src="assets/images/youtube.png" width="10%">
+                  </a>
+                  <a href="https://hemanth-sunkireddy.github.io/BloodLytics/">
+                    <img src="assets/images/brand.png" width="13%" class="m-lg-0">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
         </div>
+      </div>
     </div>
     <!--/ End Footer Top -->
-</footer>
-<!--/ End Footer Area -->
+  </footer>
+  <!--/ End Footer Area -->
 
 
 
@@ -287,7 +280,7 @@
       });
 
       var svg = d3.select("#chart"),
-        margin = { top: 40, right: 20, bottom: 30, left: 40 },
+        margin = { top: 40, right: 20, bottom: 80, left: 160 },
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -309,6 +302,35 @@
         .attr("class", "axis-y")
         .call(d3.axisLeft(y).ticks(10).tickFormat(d3.format(".2s")));
 
+      // Select the axis labels and apply styles
+      svg.selectAll(".axis-x text")
+        .style("fill", "black") // Set text color to black
+        .style("font-size", "20px"); // Set text size to 14px
+
+      svg.selectAll(".axis-y text")
+        .style("fill", "black") // Set text color to black
+        .style("font-size", "16px"); // Set text size to 14px
+
+      // Append label to y-axis
+      svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", margin.left - 100)
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .style("font-size", "24px")
+        .text("Number of Blood Units");
+
+      // Append label to y-axis
+      svg.append("text")
+        .attr("y", margin.bottom + 440)
+        .attr("x", margin.left + 300)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .style("font-size", "24px")
+        .text("Type of Clinical Method");
+
+
       // Adding Tool Tip to the Graphs
       var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -322,7 +344,7 @@
         .style("border-radius", "5px") // Add border radius for rounded corners
         .style("color", "#000000") // Change text color
         .style("font-weight", "bold") // Make text bold
-        .style("font-size", "12px") // Change font size
+        .style("font-size", "18px") // Change font size
         .style("pointer-events", "none") // Avoid tooltip blocking mouse events
         .style("visibility", "hidden");
 
@@ -330,9 +352,9 @@
         .data(cleanedData)
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("x", function (d) { return x(d.specialty); })
+        .attr("x", function (d) { return x(d.specialty) + 40; })
         .attr("y", height)
-        .attr("width", x.bandwidth() - 50)
+        .attr("width", x.bandwidth() - 100)
         .attr("height", 0)
         .transition()
         .duration(1400)
@@ -341,8 +363,7 @@
 
       g.selectAll(".bar")
         .on("mouseover", function (event, d) {
-          tooltip.transition()
-            .duration(200)
+          tooltip
             .style("opacity", .9);
           tooltip.html("Blood Units: " + d.beds)
             .style("left", (event.pageX + 10) + "px")
@@ -350,8 +371,7 @@
             .style("visibility", "visible");
         })
         .on("mouseout", function (d) {
-          tooltip.transition()
-            .duration(500)
+          tooltip
             .style("opacity", 0);
         });
 
