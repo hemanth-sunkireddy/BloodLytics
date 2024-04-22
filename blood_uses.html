@@ -602,8 +602,8 @@
               .attr("transform", `translate(0,${height})`)
               .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
 
-            
-             
+
+
             // Append label to y-axis
             svg.append("text")
               .attr("y", margin.bottom + 650)
@@ -655,7 +655,7 @@
           // Define the dimensions for the chart
           const width = 1000;
           const height = 700;
-          const margin = { top: 20, right: 200, bottom: 30, left: 320 };
+          const margin = { top: 20, right: 200, bottom: 100, left: 320 };
 
           // Create SVG element
           const svg = additionalChartContainer.append("svg")
@@ -693,13 +693,13 @@
               .attr("width", 0)
               .attr("height", yScale.bandwidth())
               .on("mouseover", function (event, d) {
-                tooltip.style("opacity", 1)
-                  .html(`<strong>${d.ObstetricsGynaecology}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+                tooltip4.html(`<strong>${d.ObstetricsGynaecology}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
                   .style("left", (event.pageX) + "px")
-                  .style("top", (event.pageY - 28) + "px");
+                  .style("top", (event.pageY) + "px")
+                  .style("visibility", "visible");
               })
               .on("mouseout", function () {
-                tooltip.style("opacity", 0);
+                tooltip4.style("visibility", "hidden");
               });
 
             // Animation
@@ -719,22 +719,59 @@
 
             // Draw Y axis
             svg.append("g")
-              .attr("class", "y axis")
+              .attr("class", "yAxis5")
               .call(d3.axisLeft(yScale));
 
             // Draw X axis
             svg.append("g")
-              .attr("class", "x axis")
+              .attr("class", "xAxis5")
               .attr("transform", `translate(0,${height})`)
               .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
 
+            // Append label to y-axis
+            svg.append("text")
+              .attr("y", margin.bottom + 650)
+              .attr("x", margin.left + 300)
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .style("font-size", "24px")
+              .text("Total Number of Blood Units");
+
+
+            // Select the axis labels and apply styles
+            svg.selectAll(".xAxis5 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "18px") // Set text size to 20px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+            svg.selectAll(".yAxis5 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "14px") // Set text size to 16px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+
+
+
             // Tooltip element
-            const tooltip = d3.select("body").append("div")
-              .attr("class", "tooltip")
-              .style("opacity", 0);
+            // Adding Tool Tip to the Graphs
+            var tooltip4 = d3.select("body").append("div")
+              .attr("class", "tooltip4")
+              .style("opacity", 1)
+              .style("position", "absolute")
+              .style("width", "150px") // Adjust width as needed
+              .style("height", "auto") // Adjust height as needed
+              .style("background-color", "#ffb6c1") // Change background color
+              .style("border", "1px solid #000000") // Add border
+              .style("padding", "10px") // Add padding for better appearance
+              .style("border-radius", "5px") // Add border radius for rounded corners
+              .style("color", "#000000") // Change text color
+              .style("font-weight", "bold") // Make text bold
+              .style("font-size", "14px") // Change font size
+              .style("pointer-events", "none") // Avoid tooltip blocking mouse events
+              .style("visibility", "hidden");
 
 
-            
+
           });
 
 
@@ -746,7 +783,7 @@
           // Define the dimensions for the chart
           const width = 1000;
           const height = 700;
-          const margin = { top: 20, right: 200, bottom: 30, left: 220 };
+          const margin = { top: 20, right: 200, bottom: 100, left: 320 };
 
           // Create SVG element
           const svg = additionalChartContainer.append("svg")
@@ -785,13 +822,13 @@
               .attr("width", 0)
               .attr("height", yScale.bandwidth())
               .on("mouseover", function (event, d) {
-                tooltip.style("opacity", 1)
-                  .html(`<strong>${d.Pediatrics}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+                tooltip5.html(`<strong>${d.Pediatrics}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
                   .style("left", (event.pageX) + "px")
-                  .style("top", (event.pageY - 28) + "px");
+                  .style("top", (event.pageY) + "px")
+                  .style("visibility", "visible");
               })
               .on("mouseout", function () {
-                tooltip.style("opacity", 0);
+                tooltip5.style("visibility", "hidden");
               });
 
             // Animation
@@ -811,19 +848,60 @@
 
             // Draw Y axis
             svg.append("g")
-              .attr("class", "y axis")
+              .attr("class", "yAxis6")
               .call(d3.axisLeft(yScale));
 
             // Draw X axis
             svg.append("g")
-              .attr("class", "x axis")
+              .attr("class", "xAxis6")
               .attr("transform", `translate(0,${height})`)
               .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
 
+           
+           // Append label to y-axis
+           svg.append("text")
+              .attr("y", margin.bottom + 650)
+              .attr("x", margin.left + 300)
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .style("font-size", "24px")
+              .text("Total Number of Blood Units");
+
+
+            // Select the axis labels and apply styles
+            svg.selectAll(".xAxis6 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "18px") // Set text size to 20px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+            svg.selectAll(".yAxis6 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "14px") // Set text size to 16px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+
+
+
             // Tooltip element
-            const tooltip = d3.select("body").append("div")
-              .attr("class", "tooltip")
-              .style("opacity", 0);
+            // Adding Tool Tip to the Graphs
+            var tooltip5 = d3.select("body").append("div")
+              .attr("class", "tooltip5")
+              .style("opacity", 1)
+              .style("position", "absolute")
+              .style("width", "150px") // Adjust width as needed
+              .style("height", "auto") // Adjust height as needed
+              .style("background-color", "#ffb6c1") // Change background color
+              .style("border", "1px solid #000000") // Add border
+              .style("padding", "10px") // Add padding for better appearance
+              .style("border-radius", "5px") // Add border radius for rounded corners
+              .style("color", "#000000") // Change text color
+              .style("font-weight", "bold") // Make text bold
+              .style("font-size", "14px") // Change font size
+              .style("pointer-events", "none") // Avoid tooltip blocking mouse events
+              .style("visibility", "hidden");
+
+
+
           }).catch(function (error) {
             console.log("Error loading the data for Pediatrics");
           });
