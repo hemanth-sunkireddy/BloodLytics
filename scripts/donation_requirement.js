@@ -74,6 +74,9 @@ Promise.all([
         div.transition()
           .duration(500)
           .style("opacity", 0);
+
+          tooltip
+          .style('visibility', "hidden");
       });
 
     // Populate dropdown options
