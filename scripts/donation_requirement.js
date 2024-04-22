@@ -97,7 +97,7 @@ Promise.all([
     .attr("text-anchor", "middle")
     .attr("fill", "#000")
     .style("font-size", "16px")
-    .text("Donations");
+    .text("Donations (Blood Units - pints)");
 
   svg.append("g")
     .attr("transform", "translate(" + width + " ,0)")
@@ -111,7 +111,7 @@ Promise.all([
     .attr("text-anchor", "middle")
     .attr("fill", "#000")
     .style("font-size", "16px")
-    .text("Requirements");
+    .text("Requirements (Blood Units - pints)");
 
   // Add line connecting left and right axes at 0
   svg.append("line")
