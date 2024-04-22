@@ -270,7 +270,7 @@
   <script>
 
     // Load main data from CSV file
-    d3.csv("../Data_Sets/totalRequirement.csv").then(function (data) {
+    d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/totalRequirement.csv").then(function (data) {
       // Data processing and visualization code for main chart goes here
       var cleanedData = data.map(function (d) {
         return {
