@@ -108,7 +108,7 @@
     }
 
     #additional-chart-container {
-      width: 750px;
+      width: 1450px;
       border: 1px solid black;
       background-color: whitesmoke;
       animation: fadeIn 2s ease forwards;
@@ -191,7 +191,7 @@
   </div>
   <hr>
   <div id="additional-chart-container"></div>
-  <div id="" histo-chart"></div>
+  <div id="histo-chart"></div>
 
   <div style="text-align: center; margin-top: 2%">
     <p style="font-weight: bolder; font-size: large;">The clinical demand of Blood in India: <a
@@ -291,7 +291,7 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       x.domain(cleanedData.map(function (d) { return d.specialty; }));
-      y.domain([0, 700000]); // Set the y-axis domain
+      y.domain([0, 6500000]); // Set the y-axis domain
 
       g.append("g")
         .attr("class", "axis-x")
@@ -395,9 +395,9 @@
           additionalChartContainer.selectAll("*").remove();
 
           // Define the dimensions for the chart
-          const width = 600;
-          const height = 300;
-          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+          const width = 1000;
+          const height = 700;
+          const margin = { top: 20, right: 200, bottom: 100, left: 280 };
 
           // Create SVG element
           const svg = additionalChartContainer.append("svg")
@@ -424,7 +424,7 @@
             const yScale = d3.scaleBand()
               .domain(data.map(d => d.Disease))
               .range([0, height])
-              .padding(0.1);
+              .padding(0.2);
 
             // Draw bars
             const bars = svg.selectAll(".bar")
@@ -436,14 +436,34 @@
               .attr("width", 0)
               .attr("height", yScale.bandwidth())
               .on("mouseover", function (event, d) {
-                tooltip.style("opacity", 1)
-                  .html(`<strong>${d.Disease}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+
+
+                tooltip2.html(`<strong>${d.Disease}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
                   .style("left", (event.pageX) + "px")
-                  .style("top", (event.pageY - 28) + "px");
+                  .style("top", (event.pageY) + "px")
+                  .style("visibility", "visible");
               })
               .on("mouseout", function () {
-                tooltip.style("opacity", 0);
+                tooltip2.style("visibility", "hidden");
               });
+
+
+            // Adding Tool Tip to the Graphs
+            var tooltip2 = d3.select("body").append("div")
+              .attr("class", "tooltip2")
+              .style("opacity", 1)
+              .style("position", "absolute")
+              .style("width", "150px") // Adjust width as needed
+              .style("height", "auto") // Adjust height as needed
+              .style("background-color", "#ffb6c1") // Change background color
+              .style("border", "1px solid #000000") // Add border
+              .style("padding", "10px") // Add padding for better appearance
+              .style("border-radius", "5px") // Add border radius for rounded corners
+              .style("color", "#000000") // Change text color
+              .style("font-weight", "bold") // Make text bold
+              .style("font-size", "14px") // Change font size
+              .style("pointer-events", "none") // Avoid tooltip blocking mouse events
+              .style("visibility", "hidden");
 
             // Animation
             bars.transition()
@@ -462,14 +482,37 @@
 
             // Draw Y axis
             svg.append("g")
-              .attr("class", "y axis")
+              .attr("class", "yAxis2")
               .call(d3.axisLeft(yScale));
 
             // Draw X axis
             svg.append("g")
-              .attr("class", "x axis")
+              .attr("class", "xAxis2")
               .attr("transform", `translate(0,${height})`)
               .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
+
+            // Append label to y-axis
+            svg.append("text")
+              .attr("y", margin.bottom + 650)
+              .attr("x", margin.left + 300)
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .style("font-size", "24px")
+              .text("Total Number of Blood Units");
+
+
+            // Select the axis labels and apply styles
+            svg.selectAll(".xAxis2 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "18px") // Set text size to 20px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+            svg.selectAll(".yAxis2 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "14px") // Set text size to 16px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+
 
             // Tooltip element
             const tooltip = d3.select("body").append("div")
@@ -482,9 +525,9 @@
           additionalChartContainer.selectAll("*").remove();
 
           // Define the dimensions for the chart
-          const width = 600;
-          const height = 300;
-          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+          const width = 1000;
+          const height = 700;
+          const margin = { top: 20, right: 200, bottom: 100, left: 220 };
 
           // Create SVG element
           const svg = additionalChartContainer.append("svg")
@@ -523,13 +566,14 @@
               .attr("width", 0)
               .attr("height", yScale.bandwidth())
               .on("mouseover", function (event, d) {
-                tooltip.style("opacity", 1)
-                  .html(`<strong>${d.Surgery}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
+
+                tooltip3.html(`<strong>${d.Surgery}</strong><br/>Demand: ${d.Demand.toLocaleString()}`)
                   .style("left", (event.pageX) + "px")
-                  .style("top", (event.pageY - 28) + "px");
+                  .style("top", (event.pageY) + "px")
+                  .style("visibility", "visible");
               })
               .on("mouseout", function () {
-                tooltip.style("opacity", 0);
+                tooltip3.style("visibility", "hidden");
               });
 
             // Animation
@@ -549,19 +593,58 @@
 
             // Draw Y axis
             svg.append("g")
-              .attr("class", "y axis")
+              .attr("class", "yAxis3")
               .call(d3.axisLeft(yScale));
 
             // Draw X axis
             svg.append("g")
-              .attr("class", "x axis")
+              .attr("class", "xAxis3")
               .attr("transform", `translate(0,${height})`)
               .call(d3.axisBottom(xScale).tickFormat(d3.format(".2s")));
 
+            
+             
+            // Append label to y-axis
+            svg.append("text")
+              .attr("y", margin.bottom + 650)
+              .attr("x", margin.left + 300)
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .style("font-size", "24px")
+              .text("Total Number of Blood Units");
+
+
+            // Select the axis labels and apply styles
+            svg.selectAll(".xAxis3 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "18px") // Set text size to 20px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+            svg.selectAll(".yAxis3 text")
+              .style("fill", "black") // Set text color to black
+              .style("font-size", "14px") // Set text size to 16px
+              .style("font-weight", "bold"); // Set font weight to bold
+
+
+
+
             // Tooltip element
-            const tooltip = d3.select("body").append("div")
-              .attr("class", "tooltip")
-              .style("opacity", 0);
+            // Adding Tool Tip to the Graphs
+            var tooltip3 = d3.select("body").append("div")
+              .attr("class", "tooltip3")
+              .style("opacity", 1)
+              .style("position", "absolute")
+              .style("width", "150px") // Adjust width as needed
+              .style("height", "auto") // Adjust height as needed
+              .style("background-color", "#ffb6c1") // Change background color
+              .style("border", "1px solid #000000") // Add border
+              .style("padding", "10px") // Add padding for better appearance
+              .style("border-radius", "5px") // Add border radius for rounded corners
+              .style("color", "#000000") // Change text color
+              .style("font-weight", "bold") // Make text bold
+              .style("font-size", "14px") // Change font size
+              .style("pointer-events", "none") // Avoid tooltip blocking mouse events
+              .style("visibility", "hidden");
           });
 
         } else if (selectedDomain === "ObstetricsGynaecology") {
@@ -569,9 +652,10 @@
           additionalChartContainer.selectAll("*").remove();
 
           // Define the dimensions for the chart
-          const width = 600;
-          const height = 300;
-          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+          // Define the dimensions for the chart
+          const width = 1000;
+          const height = 700;
+          const margin = { top: 20, right: 200, bottom: 30, left: 320 };
 
           // Create SVG element
           const svg = additionalChartContainer.append("svg")
@@ -648,6 +732,9 @@
             const tooltip = d3.select("body").append("div")
               .attr("class", "tooltip")
               .style("opacity", 0);
+
+
+            
           });
 
 
@@ -656,9 +743,10 @@
           additionalChartContainer.selectAll("*").remove();
 
           // Define the dimensions for the chart
-          const width = 600;
-          const height = 300;
-          const margin = { top: 20, right: 20, bottom: 30, left: 120 };
+          // Define the dimensions for the chart
+          const width = 1000;
+          const height = 700;
+          const margin = { top: 20, right: 200, bottom: 30, left: 220 };
 
           // Create SVG element
           const svg = additionalChartContainer.append("svg")
