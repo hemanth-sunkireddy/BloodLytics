@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                     // console.log(this);
                     d3.select(this)
-                                   .attr("stroke-width", 7);
+                                   .attr("stroke-width", 4);
                     // Calculate the position of the tooltip relative to the SVG container
                     let result;
                     for (let j = 0; j < ExtractedData.length; j++) {

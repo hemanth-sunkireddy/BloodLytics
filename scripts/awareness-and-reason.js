@@ -1,6 +1,6 @@
 // Define an array of datasets, each containing name, file path, and color
 var datasets = [
-    { name: "Reasons for Not Donating Blood", file: "Data_Sets/reasons_for_not_donating_blood.csv", color: '#FF5733' }, // Dark orange
+    { name: "Reasons for Not Donating the Blood", file: "Data_Sets/reasons_for_not_donating_blood.csv", color: '#FF5733' }, // Dark orange
     { name: "Misconceptions on blood donation", file: "Data_Sets/misconceptions.csv", color: '#6C3483' }, // Dark purple
     { name: "Motivation for blood donation", file: "Data_Sets/motivation.csv", color: '#1E8449' }, // Dark green
     { name: "Knowledge and Attitude Regarding Blood Donation", file: "Data_Sets/knowledge-and-attitude-regarding-blood-donation.csv", color: '#2874A6' } // Dark blue
@@ -28,7 +28,13 @@ function loadDataset(dataset, index) {
         .attr("x", margin.left)
         .attr("y", index * 1000 + 10)
         .attr("font-size", "24px")
-        .text(dataset.name);
+        .text(dataset.name)
+        .style("font-family", "Arial")
+        .attr("x", margin.left + (width / 2)) // Center the text horizontally
+        .attr("y", index * 1000 + 10) // Adjust vertical position as needed
+        .attr("font-size", "24px")
+        .attr("text-anchor", "middle")
+        .style("font-weight", "bold");
 
     d3.csv(dataset.file, function (data) {
         // Convert CSV data to hierarchy
