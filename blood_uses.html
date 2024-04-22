@@ -409,7 +409,7 @@
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
           // Read the data from CSV
-          d3.csv("../Data_Sets/Medicine.csv").then(function (data) {
+          d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/Medicine.csv").then(function (data) {
             // Convert string to number where necessary
             data.forEach(function (d) {
               d.Demand = +d.Demand;
@@ -539,7 +539,7 @@
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
           // Read the data from CSV
-          d3.csv("../Data_Sets/Surgery.csv").then(function (data) {
+          d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/Surgery.csv").then(function (data) {
             // Convert string to number where necessary
             data.forEach(function (d) {
               d.Demand = parseInt(d.Demand.replace(/,/g, '')); // Remove commas before parsing
@@ -666,7 +666,7 @@
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
           // Read the data from CSV
-          d3.csv("../Data_Sets/ObstetricsGynaecology.csv").then(function (data) {
+          d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/ObstetricsGynaecology.csv").then(function (data) {
             // Convert string to number where necessary
             data.forEach(function (d) {
               d.Demand = +d.Demand.replace(/,/g, ''); // Remove commas from Demand values
@@ -795,7 +795,7 @@
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
           // Read the data from CSV
-          d3.csv("../Data_Sets/Pediatrics.csv").then(function (data) {
+          d3.csv("https://raw.githubusercontent.com/hemanth-sunkireddy/BloodLytics/main/Data_Sets/Pediatrics.csv").then(function (data) {
             // Convert string to number where necessary
             data.forEach(function (d) {
               d.Demand = parseInt(d.Demand.replace(/,/g, '')); // Remove commas and parse as integer
